@@ -2,6 +2,7 @@ cff-version: 1.2.0
 message: "If you use this protocol, please cite it as below."
 title: "Research Audit Protocol (ChatGPT–Gemini Duel)"
 version: "1.7"
+doi: "10.5281/zenodo.17898869"
 date-released: "2025-12-11"
 authors:
   - family-names: "Irsova"
