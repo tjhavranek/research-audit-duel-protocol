@@ -37,6 +37,17 @@ The protocol prioritizes clarity, accessibility, and agent compatibility over he
 
 ---
 
+## Example
+
+A worked example using MAIVE and WAIVE is available in the [`examples/`](examples/) folder.  
+It shows the full duel run for the task:
+
+> HOW CAN I IMPROVE THE PROPOSED WAIVE APPROACH?
+
+with `maive.pdf` and `waive_ottawa.pdf` as inputs and `AI_duel_results.docx` as the resulting audit report.
+
+---
+
 ## Citation
 
 If you use this protocol in your research, please cite:
