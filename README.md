@@ -2,7 +2,7 @@
 
 ![Version](https://img.shields.io/badge/version-1.7-blue)
 ![License](https://img.shields.io/badge/license-CC--BY--4.0-green)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.PLACEHOLDER.svg)](https://doi.org/10.5281/zenodo.PLACEHOLDER)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17898869.svg)](https://doi.org/10.5281/zenodo.17898869)
 
 **Authors:** Zuzana Irsova & Tomas Havranek  
 Web: https://meta-analysis.cz
