@@ -54,7 +54,7 @@ If you use this protocol in your research, please cite:
 
 > Irsova, Z., & Havranek, T. (2025). *Research Audit Protocol (ChatGPT–Gemini Duel), v1.7.* GitHub repository. https://github.com/tjhavranek/research-audit-duel-protocol
 
-Once a DOI is minted via Zenodo, you can also cite the DOI shown in the badge above.
+You can also cite the DOI shown in the badge above: **10.5281/zenodo.17898869**.
 
 ---
 
