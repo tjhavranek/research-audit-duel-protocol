@@ -48,6 +48,30 @@ with `maive.pdf` and `waive_ottawa.pdf` as inputs and `AI_duel_results.docx` as 
 
 ---
 
+## Independent Replication (External Use)
+
+The protocol has been independently implemented by external researchers.
+
+For example, Prof. Bob Reed (University of Canterbury) applied the protocol following the public WAIVE example and reported successful execution:
+
+> “This is brilliant! I love it! Well done, Zuzana and Tomas. I will definitely employ this in my future work. And very easy to implement!
+> I followed your example and got slightly different results (of course). I then asked ChatGPT to compare my final report with yours and this is what it said (spoiler alert: it strengthens the value of your protocol):
+>
+> *The two reports are substantively the same, with only minor stylistic differences. Their convergence is strong evidence that:*
+> – *the key weaknesses of WAIVE have been correctly identified,*
+> – *the improvement path is coherent and defensible,*
+> – *and the final conclusions are not an artifact of one AI's reasoning style.*”
+
+This illustrates an intended feature of the protocol: independent runs may differ in surface form while converging on the same substantive conclusions.
+
+Note: the “open Gemini inside ChatGPT” step depends on the current Agent/browser environment. If it fails in a given setup, you can run the same duel by manually copy–pasting between models (human-in-the-loop) without changing the adversarial structure.
+
+Links:
+- Bob’s original comment (MAER-Net): https://www.maer-net.org/post/ai_duel?commentId=0405637a-a4e5-4b40-8498-2fdd496fdad0
+- LinkedIn post: https://www.linkedin.com/posts/zuzanairsova_the-adversarial-advantage-ai-duels-for-meta-analysis-activity-7405164271153803265-xZxQ
+
+---
+
 ## Citation
 
 If you use this protocol in your research, please cite:
