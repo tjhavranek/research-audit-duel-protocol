@@ -1,9 +1,8 @@
 cff-version: 1.2.0
-message: "If you use this protocol, please cite it as below."
-title: "Research Audit Protocol (ChatGPT–Gemini Duel)"
-version: "1.7"
-doi: "10.5281/zenodo.17898869"
-date-released: "2025-12-11"
+message: "If you use these protocols, please cite them as below."
+title: "Research Audit Protocols: Duel + MAD"
+version: "2.0"
+date-released: "2026-03-19"
 authors:
   - family-names: "Irsova"
     given-names: "Zuzana"
@@ -13,3 +12,10 @@ authors:
     affiliation: "Charles University; MAER-Net"
 repository-code: "https://github.com/tjhavranek/research-audit-duel-protocol"
 license: "CC-BY-4.0"
+keywords:
+  - research audit
+  - adversarial evaluation
+  - multi-agent debate
+  - large language models
+  - peer review
+  - methodology audit
