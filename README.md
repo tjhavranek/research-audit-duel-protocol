@@ -3,7 +3,7 @@
 ![Duel](https://img.shields.io/badge/duel-v1.7-blue)
 ![MAD](https://img.shields.io/badge/MAD-v2.0-purple)
 ![License](https://img.shields.io/badge/license-CC--BY--4.0-green)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17898869.svg)](https://doi.org/10.5281/zenodo.17898869)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19105954.svg)](https://doi.org/10.5281/zenodo.19105954)
 
 **Authors:** Zuzana Irsova & Tomas Havranek  
 Web: https://meta-analysis.cz
@@ -98,10 +98,10 @@ In practice, **Duel** is the lighter protocol and **MAD** is the heavier audit p
 
 5. Collect those Round 1 outputs and feed them back to all models for **Round 2 cross-examination**.
 
-6. Run **Round 3 only if needed**, that is, only when Round 2 leaves a genuine unresolved fault line.
+6. **Round 3 is optional** and should be used only when Round 2 leaves a genuine unresolved fault line.
 
 7. Use **ChatGPT as the final arbiter** to synthesize the surviving criticisms, rejected points, minority report, and action list.  
-   For the cleanest setup, use ChatGPT as the judge in a **fresh conversation**, or reserve it for the arbiter role only.
+   For the cleanest setup, either reserve ChatGPT for the arbiter role only or use a **fresh conversation** for the final synthesis.
 
 **Practical note.** Free versions of some models can be sufficient, especially for exploratory use. But users should expect stricter upload limits, smaller context windows, usage caps, and occasional missing file support. For high-stakes work, paid versions are usually more reliable.
 
@@ -148,19 +148,11 @@ Links:
 
 ## Citation
 
-If you use the **Duel v1.7** workflow, please cite:
+If you use these protocols in your research, please cite:
 
-> Irsova, Z., & Havranek, T. (2025). *Research Audit Protocol (ChatGPT--Gemini Duel), v1.7.* GitHub repository. https://github.com/tjhavranek/research-audit-duel-protocol
+> Irsova, Z., & Havranek, T. (2026). *Research Audit Protocols: Duel + MAD, v2.0.* GitHub repository. https://doi.org/10.5281/zenodo.19105954
 
-The DOI shown in the badge above currently corresponds to the public **Duel v1.7** release:
-
-**10.5281/zenodo.17898869**
-
-If you use **MAD v2.0** before a separate tagged release/DOI is created, please cite the repository and specify explicitly that you used:
-
-> `protocol/ai_mad_protocol_v2.0.md`
-
-Once a separate public release is created for MAD v2.0, the citation metadata should be updated accordingly.
+If you specifically want to reference the original two-model workflow as a historical version, the **Duel v1.7** files remain available in this repository.
 
 ---
 
