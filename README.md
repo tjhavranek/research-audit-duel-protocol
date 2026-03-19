@@ -70,7 +70,7 @@ In practice, **Duel** is the lighter protocol and **MAD** is the heavier audit p
 
 ## How To Use
 
-## A. Use Duel v1.7
+### A. Use Duel v1.7
 
 1. Open **ChatGPT Plus/Pro** with Agent Mode (browsing/tools enabled).  
 2. Copy the full text from [`protocol/ai_duel_protocol_v1.7.md`](protocol/ai_duel_protocol_v1.7.md).  
@@ -82,7 +82,7 @@ In practice, **Duel** is the lighter protocol and **MAD** is the heavier audit p
    - continue the duel until either verified consensus or irreducible disagreement is reached.  
 6. At the end, read the final self-audit and report produced by ChatGPT.
 
-## B. Use MAD v2.0
+### B. Use MAD v2.0
 
 1. Open the four models you want to use:
    - ChatGPT
