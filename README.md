@@ -2,6 +2,7 @@
 
 ![Duel](https://img.shields.io/badge/duel-v1.7-blue)
 ![MAD](https://img.shields.io/badge/MAD-v2.0-purple)
+[![mad-research](https://img.shields.io/badge/mad--research-v0.5-orange)](https://github.com/tjhavranek/mad-research)
 ![License](https://img.shields.io/badge/license-CC--BY--4.0-green)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19105954.svg)](https://doi.org/10.5281/zenodo.19105954)
 
@@ -28,6 +29,16 @@ The repository currently includes **two related protocols**:
 
 Both protocols prioritize clarity, accessibility, and evidence-grounded critique over heavy automation.
 
+An **automated companion** for users who want a code-free but
+script-driven version of the same workflow lives in a separate
+repository: **[`tjhavranek/mad-research` (v0.5)](https://github.com/tjhavranek/mad-research)**.
+It is a family of Claude Code skills that automates the Claude+Codex
+side of a MAD-style audit (independent role streams, anonymized
+cross-critique, fresh-context synthesis against a locked rubric).
+Duel v1.7 and MAD v2.0 remain the stable manual protocols here;
+mad-research v0.5 is the automation-first extension and does not
+replace them.
+
 ---
 
 ## Available Protocols
@@ -49,6 +60,24 @@ This is the extended protocol for **high-stakes document audit** using four majo
 
 It is more demanding to run, but it provides broader stress-testing and more structured cross-examination.
 
+### 3. Claude+Codex automated companion (`mad-research` v0.5) — separate repo
+Repo: <https://github.com/tjhavranek/mad-research>
+
+A Claude Code skill family that automates the Claude+Codex side of a
+MAD-style audit for users who have both Claude Code and a basic
+ChatGPT subscription (Codex CLI). Three independent role streams,
+anonymized cross-critique, fresh-context Codex synthesis against a
+locked rubric, minority report preserved, full audit trail on disk.
+No code to write; the user invokes it in natural language.
+
+`mad-research` v0.5 is an automation-first extension of the manual
+MAD v2.0 workflow, not a replacement for it. The manual protocol
+remains the right tool when you want broad coverage across four
+frontier models (ChatGPT + Claude + Gemini + Grok) or when you want
+the human-in-the-loop discipline of Duel/MAD copy-paste. See the
+v3 repo's README for prerequisites, install, and a worked WAIVE
+example.
+
 ---
 
 ## Which Protocol Should I Use?
@@ -64,7 +93,14 @@ Use **MAD v2.0** if:
 - you want structured cross-examination across several frontier models  
 - you are auditing a paper, grant proposal, referee report, or research design under serious uncertainty  
 
-In practice, **Duel** is the lighter protocol and **MAD** is the heavier audit protocol.
+Use **[`mad-research` v0.5](https://github.com/tjhavranek/mad-research)** if:
+- you already use Claude Code and have a basic ChatGPT subscription (Codex CLI)
+- you want the audit to run as a single natural-language command rather than copy-paste between web UIs
+- you want the audit trail (drafts, cross-critiques, rejected points, minority report) saved on disk automatically
+- you are comfortable trading the four-model coverage of MAD v2.0 for the two-model automation of Claude + Codex
+
+In practice, **Duel** is the lightest, **MAD** is the heaviest manual
+audit, and **mad-research** is the automated middle ground.
 
 ---
 
