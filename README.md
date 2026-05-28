@@ -75,8 +75,8 @@ MAD v2.0 workflow, not a replacement for it. The manual protocol
 remains the right tool when you want broad coverage across four
 frontier models (ChatGPT + Claude + Gemini + Grok) or when you want
 the human-in-the-loop discipline of Duel/MAD copy-paste. See the
-v3 repo's README for prerequisites, install, and a worked WAIVE
-example.
+[`mad-research`](https://github.com/tjhavranek/mad-research) repository's
+README for prerequisites, install, and a worked WAIVE example.
 
 ---
 
