@@ -2,7 +2,7 @@
 
 ![Duel](https://img.shields.io/badge/duel-v1.7-blue)
 ![MAD](https://img.shields.io/badge/MAD-v2.0-purple)
-[![mad-research](https://img.shields.io/badge/mad--research-v0.5-orange)](https://github.com/tjhavranek/mad-research)
+[![mad-research](https://img.shields.io/badge/mad--research-v0.95-orange)](https://github.com/tjhavranek/mad-research)
 ![License](https://img.shields.io/badge/license-CC--BY--4.0-green)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19105954.svg)](https://doi.org/10.5281/zenodo.19105954)
 
@@ -31,13 +31,19 @@ Both protocols prioritize clarity, accessibility, and evidence-grounded critique
 
 An **automated companion** for users who want a code-free but
 script-driven version of the same workflow lives in a separate
-repository: **[`tjhavranek/mad-research` (v0.5)](https://github.com/tjhavranek/mad-research)**.
-It is a family of Claude Code skills that automates the Claude+Codex
-side of a MAD-style audit (independent role streams, anonymized
-cross-critique, fresh-context synthesis against a locked rubric).
-Duel v1.7 and MAD v2.0 remain the stable manual protocols here;
-mad-research v0.5 is the automation-first extension and does not
-replace them.
+repository: **[`tjhavranek/mad-research` (v0.95)](https://github.com/tjhavranek/mad-research)**.
+The repo contains three Claude Code skills for Claude+Codex work
+(`codex-bridge`, `mad-build`, and `mad-research`); its audit skill,
+`mad-research`, automates independent role streams, anonymized
+cross-critique with a packet-level prompt-injection guard,
+fresh-context Codex synthesis against a locked rubric, a preserved
+minority report, a rejected-points record, and a trajectory ledger
+for surviving criticisms. Optional opt-in **Bayesian Mode** adds
+prior / evidence / posterior discipline for a specific contested
+empirical claim; its posterior is a structured stance, not a
+calibrated probability. Duel v1.7 and MAD v2.0 remain the stable
+manual protocols here; `mad-research` v0.95 is the automation-first
+extension and does not replace them.
 
 ---
 
@@ -60,17 +66,26 @@ This is the extended protocol for **high-stakes document audit** using four majo
 
 It is more demanding to run, but it provides broader stress-testing and more structured cross-examination.
 
-### 3. Claude+Codex automated companion (`mad-research` v0.5) — separate repo
+### 3. Claude+Codex automated companion (`mad-research` v0.95) — separate repo
 Repo: <https://github.com/tjhavranek/mad-research>
 
-A Claude Code skill family that automates the Claude+Codex side of a
-MAD-style audit for users who have both Claude Code and a basic
-ChatGPT subscription (Codex CLI). Three independent role streams,
-anonymized cross-critique, fresh-context Codex synthesis against a
-locked rubric, minority report preserved, full audit trail on disk.
-No code to write; the user invokes it in natural language.
+A Claude Code skill family for users who have Claude Code and
+authenticated Codex CLI access. The repo includes `codex-bridge`
+for one-shot Codex calls, `mad-build` for staged draft/build
+collaboration, and `mad-research` for research-document audits.
+The audit path runs three independent role streams, anonymized
+Round 2 cross-critique, and fresh-context Codex synthesis against
+a locked rubric; the final memo preserves a minority report,
+separates rejected points, includes a trajectory ledger for
+surviving criticisms, and must disclose stream effectiveness and
+model-family independence. Optional opt-in **Bayesian Mode** adds
+explicit prior / evidence / posterior discipline when the question
+is "is this empirical claim actually true?" rather than "is this
+methodology sound?"; the posterior it produces is a structured
+stance, not a calibrated probability. No code to write; the user
+invokes everything in natural language.
 
-`mad-research` v0.5 is an automation-first extension of the manual
+`mad-research` v0.95 is an automation-first extension of the manual
 MAD v2.0 workflow, not a replacement for it. The manual protocol
 remains the right tool when you want broad coverage across four
 frontier models (ChatGPT + Claude + Gemini + Grok) or when you want
@@ -93,11 +108,12 @@ Use **MAD v2.0** if:
 - you want structured cross-examination across several frontier models  
 - you are auditing a paper, grant proposal, referee report, or research design under serious uncertainty  
 
-Use **[`mad-research` v0.5](https://github.com/tjhavranek/mad-research)** if:
-- you already use Claude Code and have a basic ChatGPT subscription (Codex CLI)
+Use **[`mad-research` v0.95](https://github.com/tjhavranek/mad-research)** if:
+- you already use Claude Code and have authenticated Codex CLI access
 - you want the audit to run as a single natural-language command rather than copy-paste between web UIs
-- you want the audit trail (drafts, cross-critiques, rejected points, minority report) saved on disk automatically
-- you are comfortable trading the four-model coverage of MAD v2.0 for the two-model automation of Claude + Codex
+- you want the audit trail (drafts, cross-critiques, rejected points, minority report, trajectory ledger) saved on disk automatically
+- you are stress-testing a specific contested empirical claim and want explicit prior / evidence / posterior discipline (opt-in Bayesian Mode; the posterior is a structured stance, not a calibrated probability)
+- you are comfortable trading the four-model coverage of MAD v2.0 for the two-provider Claude+Codex automation
 
 In practice, **Duel** is the lightest, **MAD** is the heaviest manual
 audit, and **mad-research** is the automated middle ground.
