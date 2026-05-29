@@ -38,8 +38,8 @@ The repo contains three Claude Code skills for Claude+Codex work
 cross-critique with a packet-level prompt-injection guard,
 fresh-context Codex synthesis against a locked rubric, a preserved
 minority report, a rejected-points record, and a trajectory ledger
-for surviving criticisms. Optional opt-in **Bayesian Mode** adds
-prior / evidence / posterior discipline for a specific contested
+for surviving criticisms. Opt-in **Bayesian Mode** adds prior /
+evidence / posterior discipline for a specific contested
 empirical claim; its posterior is a structured stance, not a
 calibrated probability. Duel v1.7 and MAD v2.0 remain the stable
 manual protocols here; `mad-research` v0.95 is the automation-first
@@ -78,8 +78,8 @@ Round 2 cross-critique, and fresh-context Codex synthesis against
 a locked rubric; the final memo preserves a minority report,
 separates rejected points, includes a trajectory ledger for
 surviving criticisms, and must disclose stream effectiveness and
-model-family independence. Optional opt-in **Bayesian Mode** adds
-explicit prior / evidence / posterior discipline when the question
+model-family independence. Opt-in **Bayesian Mode** adds explicit
+prior / evidence / posterior discipline when the question
 is "is this empirical claim actually true?" rather than "is this
 methodology sound?"; the posterior it produces is a structured
 stance, not a calibrated probability. No code to write; the user
@@ -180,13 +180,13 @@ The protocol has been independently implemented by external researchers.
 
 For example, Prof. Bob Reed (University of Canterbury) applied the public **Duel v1.7** workflow following the WAIVE example and reported successful execution:
 
-> “This is brilliant! I love it! Well done, Zuzana and Tomas. I will definitely employ this in my future work. And very easy to implement!
+> This is brilliant! I love it! Well done, Zuzana and Tomas. I will definitely employ this in my future work. And very easy to implement!
 > I followed your example and got slightly different results (of course). I then asked ChatGPT to compare my final report with yours and this is what it said (spoiler alert: it strengthens the value of your protocol):
 >
 > *The two reports are substantively the same, with only minor stylistic differences. Their convergence is strong evidence that:*
 > - *the key weaknesses of WAIVE have been correctly identified,*
 > - *the improvement path is coherent and defensible,*
-> - *and the final conclusions are not an artifact of one AI's reasoning style.*”
+> - *and the final conclusions are not an artifact of one AI's reasoning style.*
 
 This illustrates an intended feature of the protocol: independent runs may differ in surface form while converging on the same substantive conclusions.
 
