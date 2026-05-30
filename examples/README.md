@@ -1,6 +1,6 @@
 # Example: WAIVE / MAIVE Research Audit Duel
 
-This folder contains a worked example of the **Research Audit Protocol (ChatGPT–Gemini Duel), v1.7**.
+This folder contains a worked example of the **Research Audit Protocol (ChatGPT--Gemini Duel), v1.7**.
 
 **Task used in the example**
 
