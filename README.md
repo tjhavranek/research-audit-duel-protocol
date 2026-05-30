@@ -1,6 +1,6 @@
 # Research Audit Protocols: Duel + MAD
 
-![Duel](https://img.shields.io/badge/duel-v1.7-blue)
+![Duel](https://img.shields.io/badge/Duel-v1.7-blue)
 ![MAD](https://img.shields.io/badge/MAD-v2.0-purple)
 [![mad-research](https://img.shields.io/badge/mad--research-v0.95-orange)](https://github.com/tjhavranek/mad-research)
 ![License](https://img.shields.io/badge/license-CC--BY--4.0-green)
@@ -32,18 +32,14 @@ Both protocols prioritize clarity, accessibility, and evidence-grounded critique
 An **automated companion** for users who want a code-free but
 script-driven version of the same workflow lives in a separate
 repository: **[`tjhavranek/mad-research` (v0.95)](https://github.com/tjhavranek/mad-research)**.
-The repo contains three Claude Code skills for Claude+Codex work
-(`codex-bridge`, `mad-build`, and `mad-research`); its audit skill,
-`mad-research`, automates independent role streams, anonymized
-cross-critique with a packet-level prompt-injection guard,
-fresh-context Codex synthesis against a locked rubric, a preserved
-minority report, a rejected-points record, and a trajectory ledger
-for surviving criticisms. Opt-in **Bayesian Mode** adds prior /
-evidence / posterior discipline for a specific contested
-empirical claim; its posterior is a structured stance, not a
-calibrated probability. Duel v1.7 and MAD v2.0 remain the stable
-manual protocols here; `mad-research` v0.95 is the automation-first
-extension and does not replace them.
+It is a family of three Claude Code skills (`codex-bridge`,
+`mad-build`, and `mad-research`) whose audit skill automates the
+same independent-critique, synthesis, and minority-report
+discipline, with an opt-in **Bayesian Mode** for evaluating a
+specific contested empirical claim; the full feature list is under
+**Available Protocols** below. Duel v1.7 and MAD v2.0 remain the
+stable manual protocols here; `mad-research` v0.95 is the
+automation-first extension and does not replace them.
 
 ---
 
@@ -66,7 +62,7 @@ This is the extended protocol for **high-stakes document audit** using four majo
 
 It is more demanding to run, but it provides broader stress-testing and more structured cross-examination.
 
-### 3. Claude+Codex automated companion (`mad-research` v0.95) — separate repo
+### 3. Claude+Codex automated companion (`mad-research` v0.95) -- separate repo
 Repo: <https://github.com/tjhavranek/mad-research>
 
 A Claude Code skill family for users who have Claude Code and
@@ -74,16 +70,17 @@ authenticated Codex CLI access. The repo includes `codex-bridge`
 for one-shot Codex calls, `mad-build` for staged draft/build
 collaboration, and `mad-research` for research-document audits.
 The audit path runs three independent role streams, anonymized
-Round 2 cross-critique, and fresh-context Codex synthesis against
-a locked rubric; the final memo preserves a minority report,
-separates rejected points, includes a trajectory ledger for
-surviving criticisms, and must disclose stream effectiveness and
-model-family independence. Opt-in **Bayesian Mode** adds explicit
-prior / evidence / posterior discipline when the question
-is "is this empirical claim actually true?" rather than "is this
-methodology sound?"; the posterior it produces is a structured
-stance, not a calibrated probability. No code to write; the user
-invokes everything in natural language.
+Round 2 cross-critique with a packet-level prompt-injection guard,
+and fresh-context Codex synthesis against a locked rubric; the
+final memo preserves a minority report, separates rejected points,
+includes a trajectory ledger for surviving criticisms, and must
+disclose stream effectiveness and model-family independence.
+Opt-in **Bayesian Mode** adds explicit prior / evidence /
+posterior discipline when the question is "is this empirical
+claim actually true?" rather than "is this methodology sound?";
+the posterior it produces is a structured stance, not a
+calibrated probability. No code to write; the user invokes
+everything in natural language.
 
 `mad-research` v0.95 is an automation-first extension of the manual
 MAD v2.0 workflow, not a replacement for it. The manual protocol
@@ -170,7 +167,7 @@ It shows the full **Duel v1.7** run for the task:
 
 with `maive.pdf` and `waive_ottawa.pdf` as inputs and `AI_duel_results.docx` as the resulting audit report.
 
-At present, the public worked example illustrates the **duel** workflow. The **MAD** workflow is currently documented through the protocol files in the [`protocol/`](protocol/) folder.
+At present, the public worked example illustrates the **Duel** workflow. The **MAD** workflow is currently documented through the protocol files in the [`protocol/`](protocol/) folder.
 
 ---
 
