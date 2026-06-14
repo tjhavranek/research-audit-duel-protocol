@@ -3,6 +3,7 @@
 ![Duel](https://img.shields.io/badge/Duel-v1.7-blue)
 ![MAD](https://img.shields.io/badge/MAD-v2.0-purple)
 [![mad-research](https://img.shields.io/badge/mad--research-v1.0.1-blue)](https://github.com/tjhavranek/mad-research)
+[![paper-workshop](https://img.shields.io/badge/paper--workshop-CRUCIBLE-orange)](https://github.com/tjhavranek/paper-workshop)
 ![License](https://img.shields.io/badge/license-CC--BY--4.0-green)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19105954.svg)](https://doi.org/10.5281/zenodo.19105954)
 
@@ -38,8 +39,11 @@ same independent-critique, synthesis, and minority-report
 discipline, with an opt-in **Bayesian Mode** for evaluating a
 specific contested empirical claim; the full feature list is under
 **Available Protocols** below. Duel v1.7 and MAD v2.0 remain the
-stable manual protocols here; `mad-research` is the
-automation-first extension and does not replace them.
+stable manual protocols here; `mad-research` automates the audit, and
+a further Claude-only successor -- **[`paper-workshop`](https://github.com/tjhavranek/paper-workshop)**,
+run name **CRUCIBLE** -- goes beyond auditing to argue a paper from
+rival schools and then, opt-in, rebuild it. Both `mad-research` and
+`paper-workshop` are automation-first extensions, not replacements.
 
 ---
 
@@ -90,6 +94,37 @@ the human-in-the-loop discipline of Duel/MAD copy-paste. See the
 [`mad-research`](https://github.com/tjhavranek/mad-research) repository's
 README for prerequisites, install, and a worked WAIVE example.
 
+### 4. Claude-only argue-and-rebuild workshop (`paper-workshop` / CRUCIBLE) -- separate repo
+Repo: <https://github.com/tjhavranek/paper-workshop>
+
+A Claude Code skill (Claude-only; runs on any paid plan) that goes
+beyond a critique memo to a worked rebuild. For your specific
+manuscript it assembles a topic-built fleet of referee subagents and
+makes them **argue** -- every contested claim is taken up by experts
+from at least two rival traditions, one trying to break it and one to
+defend it -- with every criticism pinned to an exact quote by a
+deterministic gate and re-checked by independent verifiers. Then,
+opt-in, it **rebuilds** the paper: a tracked-changes redline, a clean
+revised version, and a re-run of your own analysis code under the rule
+that no number enters the paper unless a logged re-run produced it,
+plus a replication package. Depth is selectable from a light Desk
+Review up to an exhaustive Summit; it works on copies and asks for
+your sign-off before anything touches a number or a claim.
+
+`paper-workshop` is the project's own self-described successor to the
+manual Duel/MAD protocols and to `mad-research`: it inherits their
+discipline (a locked severity rubric, quote-and-locate grounding, a
+preserved minority report, no confidence scores, read-only treatment
+of your files) and adds the topic-adapted debating fleet and the
+rebuild. It is the most advanced member of the family, not a
+replacement for the manual protocols here, and it is honestly scoped:
+effectiveness is not yet measured, and the rebuild has been
+demonstrated end-to-end once, on an accepted paper from the authors'
+own group. See the
+[`paper-workshop`](https://github.com/tjhavranek/paper-workshop)
+repository's README and its `LIMITATIONS.md` for the full feature list
+and the honest limits.
+
 ---
 
 ## Which Protocol Should I Use?
@@ -112,8 +147,18 @@ Use **[`mad-research`](https://github.com/tjhavranek/mad-research)** if:
 - you are stress-testing a specific contested empirical claim and want explicit prior / evidence / posterior discipline (opt-in Bayesian Mode; the posterior is a structured stance, not a calibrated probability)
 - you are comfortable trading the four-model coverage of MAD v2.0 for the two-provider Claude+Codex automation
 
-In practice, **Duel** is the lightest, **MAD** is the heaviest manual
-audit, and **mad-research** is the automated middle ground.
+Use **[`paper-workshop` / CRUCIBLE](https://github.com/tjhavranek/paper-workshop)** if:
+- you want not just a critique but an implemented revision -- a tracked redline and a clean draft with your own numbers re-run before you submit
+- you want a referee fleet built for your specific paper that argues each contested claim from rival schools, rather than a fixed model lineup
+- you already use Claude Code (it is Claude-only; no Codex or other-model access needed)
+- you accept that this is the newest and least-validated of the four -- the rebuild has been demonstrated end-to-end once, not broadly validated (see its repository's `LIMITATIONS.md`)
+
+In practice the four run from lightest to heaviest and from critique to
+rebuild: **Duel** is the lightest manual audit, **MAD** the heaviest
+manual audit, **mad-research** the automated audit memo, and
+**paper-workshop / CRUCIBLE** goes furthest -- it argues the paper and
+then, opt-in, rebuilds it. The first three tell you what is wrong;
+CRUCIBLE argues it out and then helps you fix it.
 
 ---
 
