@@ -99,11 +99,11 @@ Repo: <https://github.com/tjhavranek/paper-workshop>
 
 A Claude Code skill (Claude-only; runs on any paid plan) that goes
 beyond a critique memo to a worked rebuild. For your specific
-manuscript it assembles a topic-built fleet of referee subagents and
-makes them **argue** -- every contested claim is taken up by experts
-from at least two rival traditions, one trying to break it and one to
-defend it -- with every criticism pinned to an exact quote by a
-deterministic gate and re-checked by independent verifiers. Then,
+manuscript it assembles a fleet of referee subagents and makes them
+**argue** -- every contested claim is taken up by experts from at
+least two rival traditions, one to break it and one to defend it --
+with every criticism pinned to an exact quote by a deterministic gate
+and re-checked by independent verifiers. Then,
 opt-in, it **rebuilds** the paper: a tracked-changes redline, a clean
 revised version, and a re-run of your own analysis code under the rule
 that no number enters the paper unless a logged re-run produced it,
