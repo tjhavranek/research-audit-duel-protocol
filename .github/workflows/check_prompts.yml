@@ -1,0 +1,34 @@
+name: Check the page can find its prompts
+
+# The web page keeps no copy of the prompt text: web/site.js reads it out of
+# the protocol file at load time. So a change to a step heading, a fence or a
+# placeholder can break every copy button without changing a line of the page.
+# This job catches that in the pull request rather than in someone's browser.
+
+on:
+  push:
+    paths:
+      - 'protocol/**'
+      - 'web/site.js'
+      - 'index.html'
+      - 'tests/check_prompts.py'
+  pull_request:
+    paths:
+      - 'protocol/**'
+      - 'web/site.js'
+      - 'index.html'
+      - 'tests/check_prompts.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - run: python tests/check_prompts.py
