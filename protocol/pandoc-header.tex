@@ -1,0 +1,21 @@
+% LaTeX header for building the PDF handout from the protocol Markdown.
+%
+%   pandoc ai_mad_protocol_v2.1.md -o ai_mad_protocol_v2.1.pdf \
+%     --pdf-engine=pdflatex --include-in-header=pandoc-header.tex \
+%     -V geometry:margin=2.4cm -V fontsize=10pt -V colorlinks=true \
+%     -V linkcolor=RoyalBlue -V urlcolor=RoyalBlue --toc --toc-depth=2
+%
+% The prompts are meant to be copied out of the handout, so the default wrap
+% marker is a problem: it ends up pasted into someone's chat. Shrink the
+% verbatim face until the longest prompt line fits the measure, and if one
+% still wraps, wrap it without a marker.
+
+\usepackage{fvextra}
+\fvset{fontsize=\small,breaklines,breakanywhere,breaksymbolleft={},breakindent=0pt}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}%
+  {fontsize=\small,breaklines,breakanywhere,breaksymbolleft={},breakindent=0pt,commandchars=\\\{\}}
+\DefineVerbatimEnvironment{verbatim}{Verbatim}%
+  {fontsize=\small,breaklines,breakanywhere,breaksymbolleft={},breakindent=0pt}
+
+\usepackage{microtype}
+\setlength{\emergencystretch}{3em}
