@@ -154,13 +154,20 @@ def main():
             fail("index.html links %s but site.js fetches %s." % (name, rel))
 
     # Every relative href and src on the page must resolve, including the Duel
-    # row's whole-file button.
+    # row's whole-file button. A link to a directory needs its own index.html:
+    # GitHub Pages serves no directory listing, so such a link works locally and
+    # 404s once published, which is the worst way to find out.
     refs = set(re.findall(r'(?:href|src|data-whole)="([^"#][^":]*)"', html))
     for ref in sorted(refs):
         if ref.startswith(("http", "mailto:", "./")):
             continue
-        if not (ROOT / ref).exists():
+        target = ROOT / ref
+        if not target.exists():
             fail("index.html references %s, which does not exist." % ref)
+        elif target.is_dir() and not (target / "index.html").is_file():
+            fail("index.html links the directory %s, which has no index.html. "
+                 "GitHub Pages serves no directory listing, so this 404s once "
+                 "published. Link the files, or the folder on github.com." % ref)
 
     return report()
 

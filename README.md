@@ -87,7 +87,7 @@ PDF is usually the safest source format for document audit, since page reference
 
 ## Example
 
-The only worked example in this repository is a **Duel v1.7** run, in [`examples/`](examples/): `maive.pdf` and `waive_ottawa.pdf` as inputs, `AI_duel_results.docx` as the resulting report, for the task
+The only worked example in this repository is a **Duel v1.7** run, in [`examples/`](https://github.com/tjhavranek/research-audit-duel-protocol/tree/main/examples): `maive.pdf` and `waive_ottawa.pdf` as inputs, `AI_duel_results.docx` as the resulting report, for the task
 
 > HOW CAN I IMPROVE THE PROPOSED WAIVE APPROACH?
 
