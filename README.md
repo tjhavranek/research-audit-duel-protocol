@@ -1,7 +1,7 @@
 # Research Audit Protocols: Duel + MAD
 
 ![Duel](https://img.shields.io/badge/Duel-v1.7-blue)
-![MAD](https://img.shields.io/badge/MAD-v2.0-purple)
+![MAD](https://img.shields.io/badge/MAD-v2.1-purple)
 [![mad-research](https://img.shields.io/badge/mad--research-v1.0.1-blue)](https://github.com/tjhavranek/mad-research)
 [![paper-workshop](https://img.shields.io/badge/paper--workshop-CRUCIBLE-orange)](https://github.com/tjhavranek/paper-workshop)
 ![License](https://img.shields.io/badge/license-CC--BY--4.0-green)
@@ -14,231 +14,96 @@ Web: https://meta-analysis.cz
 
 ## Overview
 
-This repository contains **human-in-the-loop adversarial workflows** for high-stakes analytical work, such as:
+This repository holds two human-in-the-loop adversarial protocols for high-stakes analytical work: peer review of a paper or grant, auditing a methodology, stress-testing a research design.
 
-- Peer review of academic papers  
-- Auditing complex methodologies  
-- Stress-testing research designs  
-- Research design critique under uncertainty  
+- **Duel v1.7**: a two-model workflow built around a structured ChatGPT-Gemini exchange.
+- **MAD v2.1**: a four-model workflow using ChatGPT, Claude, Gemini, and Grok, with independent first-pass critiques followed by cross-examination.
 
-The protocols are designed for practical use by researchers who want **structured disagreement across frontier AI models**, while keeping the human fully in control of the process.
+Both are plain text you copy and paste, and neither needs anything installed.
 
-The repository currently includes **two related protocols**:
+The easiest way to run MAD is the web page at **https://tjhavranek.github.io/research-audit-duel-protocol/**. It lays out the four roles, fills each model's role and label into the prompts, and hands you the bundle template. Your document never goes near the page. It runs entirely in your browser, and the only thing it fetches is the protocol file sitting beside it in this repository, so nothing you type or upload is transmitted anywhere. The prompts it copies are read out of [`protocol/ai_mad_protocol_v2.1.md`](protocol/ai_mad_protocol_v2.1.md) when the page loads, so that file is the single source of truth. Edit it and the buttons copy the edited text.
 
-1. **Duel v1.7** -- a two-model workflow centered on a structured ChatGPT--Gemini adversarial exchange  
-2. **MAD v2.0** -- a four-model workflow using ChatGPT, Claude, Gemini, and Grok in a structured multi-agent debate
+## What it costs you
 
-Both protocols prioritize clarity, accessibility, and evidence-grounded critique over heavy automation.
+Running MAD end to end, before the optional Round 3:
 
-An **automated companion** for users who want a code-free but
-script-driven version of the same workflow lives in a separate
-repository: **[`tjhavranek/mad-research`](https://github.com/tjhavranek/mad-research)**.
-It is a family of three Claude Code skills (`codex-bridge`,
-`mad-build`, and `mad-research`) whose audit skill automates the
-same independent-critique, synthesis, and minority-report
-discipline, with an opt-in **Bayesian Mode** for evaluating a
-specific contested empirical claim; the full feature list is under
-**Available Protocols** below. Duel v1.7 and MAD v2.0 remain the
-stable manual protocols here; `mad-research` automates the audit, and
-a further Claude-only successor -- **[`paper-workshop`](https://github.com/tjhavranek/paper-workshop)**,
-run name **CRUCIBLE** -- goes beyond auditing to argue a paper from
-rival schools and then, opt-in, rebuild it. Both `mad-research` and
-`paper-workshop` are automation-first extensions, not replacements.
+| | |
+|---|---|
+| Accounts | Four, one per model. Free tiers are often enough to start. |
+| Model runs | Eight: four in Round 1, four in Round 2. |
+| Bundles you assemble by hand | Two, each holding four verbatim outputs. |
+| Your attention | One to two hours, mostly spent assembling bundles and on your own verification pass, not writing prompts. |
 
----
+Duel v1.7 is lighter: two accounts, one long conversation each, no bundles to assemble.
 
 ## Available Protocols
 
-### 1. Research Audit Protocol (ChatGPT--Gemini Duel) v1.7
+### Duel v1.7
 Canonical prompt file: [`protocol/ai_duel_protocol_v1.7.md`](protocol/ai_duel_protocol_v1.7.md)
 
-This is the original public protocol. It is simpler, faster, and easier to run if you want a focused adversarial exchange between two strong models.
+The original protocol. ChatGPT forms an independent view first, then argues it out with Gemini until they converge or fully map their disagreement, then audits itself against the view it wrote before the argument started. It is simpler and faster to run than MAD.
 
-### 2. Research Audit Protocol (4-Model MAD) v2.0
-Canonical prompt file: [`protocol/ai_mad_protocol_v2.0.md`](protocol/ai_mad_protocol_v2.0.md)  
-Shareable handout: [`protocol/ai_mad_protocol_v2.0.pdf`](protocol/ai_mad_protocol_v2.0.pdf)
+### MAD v2.1
+Canonical prompt file: [`protocol/ai_mad_protocol_v2.1.md`](protocol/ai_mad_protocol_v2.1.md)  
+Shareable handout: [`protocol/ai_mad_protocol_v2.1.pdf`](protocol/ai_mad_protocol_v2.1.pdf)  
+Run it in the browser: <https://tjhavranek.github.io/research-audit-duel-protocol/>
 
-This is the extended protocol for **high-stakes document audit** using four major models:
-- ChatGPT  
-- Claude  
-- Gemini  
-- Grok  
+Four models each read your document under a different assigned role, cross-examine each other's output, and a fresh conversation arbitrates.
 
-It is more demanding to run, but it provides broader stress-testing and more structured cross-examination.
+Version 2.1 fixes what v2.0 got wrong in practice. Criticisms now carry stable IDs, so a model in Round 2 can name the point it is attacking and the arbiter can tell one criticism from four. Severity is defined once and shared by every round instead of being left to each model. Round 3 has a real gate and a one-run limit, because "a genuine unresolved fault line" was not a test anyone could actually apply. Claims that rest on knowledge from outside the document get their own channel, so a missing-literature criticism can be made and then checked rather than trusted on sight. And the protocol now ends with your own verification pass over every quote and every external claim, which v2.0 left implicit. The rest is in the [changelog](CHANGELOG.md).
 
-### 3. Claude+Codex automated companion (`mad-research`) -- separate repo
-Repo: <https://github.com/tjhavranek/mad-research>
-
-A Claude Code skill family for users who have Claude Code and
-authenticated Codex CLI access. The repo includes `codex-bridge`
-for one-shot Codex calls, `mad-build` for staged draft/build
-collaboration, and `mad-research` for research-document audits.
-The audit path runs three independent role streams, anonymized
-Round 2 cross-critique with a packet-level prompt-injection guard,
-and fresh-context Codex synthesis against a locked rubric; the
-final memo preserves a minority report, separates rejected points,
-includes a trajectory ledger for surviving criticisms, and must
-disclose stream effectiveness and model-family independence.
-Opt-in **Bayesian Mode** adds explicit prior / evidence /
-posterior discipline when the question is "is this empirical
-claim actually true?" rather than "is this methodology sound?";
-the posterior it produces is a structured stance, not a
-calibrated probability. No code to write; the user invokes
-everything in natural language.
-
-`mad-research` is an automation-first extension of the manual
-MAD v2.0 workflow, not a replacement for it. The manual protocol
-remains the right tool when you want broad coverage across four
-frontier models (ChatGPT + Claude + Gemini + Grok) or when you want
-the human-in-the-loop discipline of Duel/MAD copy-paste. See the
-[`mad-research`](https://github.com/tjhavranek/mad-research) repository's
-README for prerequisites, install, and a worked WAIVE example.
-
-### 4. Claude-only argue-and-rebuild workshop (`paper-workshop` / CRUCIBLE) -- separate repo
-Repo: <https://github.com/tjhavranek/paper-workshop>
-
-A Claude Code skill (Claude-only; runs on any paid plan) that goes
-beyond a critique memo to a worked rebuild. For your specific
-manuscript it assembles a fleet of referee subagents and makes them
-**argue** -- every contested claim is taken up by experts from at
-least two rival traditions, one to break it and one to defend it --
-with every criticism pinned to an exact quote by a deterministic gate
-and re-checked by independent verifiers. Then,
-opt-in, it **rebuilds** the paper: a tracked-changes redline, a clean
-revised version, and a re-run of your own analysis code under the rule
-that no number enters the paper unless a logged re-run produced it,
-plus a replication package. Depth is selectable from a light Desk
-Review up to an exhaustive Summit; it works on copies and asks for
-your sign-off before anything touches a number or a claim.
-
-`paper-workshop` is the project's own self-described successor to the
-manual Duel/MAD protocols and to `mad-research`: it inherits their
-discipline (a locked severity rubric, quote-and-locate grounding, a
-preserved minority report, no confidence scores, read-only treatment
-of your files) and adds the topic-adapted debating fleet and the
-rebuild. It is the most advanced member of the family, not a
-replacement for the manual protocols here, and it is honestly scoped:
-effectiveness is not yet measured, and the rebuild has been
-demonstrated end-to-end once, on an accepted paper from the authors'
-own group. See the
-[`paper-workshop`](https://github.com/tjhavranek/paper-workshop)
-repository's README and its `LIMITATIONS.md` for the full feature list
-and the honest limits.
-
----
+Version 2.0 stays in the repository at [`protocol/ai_mad_protocol_v2.0.md`](protocol/ai_mad_protocol_v2.0.md) and [`protocol/ai_mad_protocol_v2.0.pdf`](protocol/ai_mad_protocol_v2.0.pdf), because it is the version the Zenodo DOI below minted, exactly as v1.7 stayed in the repository once v2.0 first landed. It is not the current version; use v2.1.
 
 ## Which Protocol Should I Use?
 
 Use **Duel v1.7** if:
-- you want a faster and simpler workflow  
-- you are testing an idea, method, or draft at moderate stakes  
-- you prefer one main orchestrator inside ChatGPT  
+- you want a faster and simpler workflow
+- you are testing an idea, method, or draft at moderate stakes
+- you prefer one main orchestrator inside ChatGPT
 
-Use **MAD v2.0** if:
-- the question is important and a miss would be costly  
-- you want multiple independent first-pass critiques  
-- you want structured cross-examination across several frontier models  
-- you are auditing a paper, grant proposal, referee report, or research design under serious uncertainty  
+Use **MAD v2.1** if:
+- the question is important and a miss would be costly
+- you want multiple independent first-pass critiques
+- you want structured cross-examination across several models
+- you are auditing a paper, grant proposal, referee report, or research design under serious uncertainty
 
-Use **[`mad-research`](https://github.com/tjhavranek/mad-research)** if:
-- you already use Claude Code and have authenticated Codex CLI access
-- you want the audit to run as a single natural-language command rather than copy-paste between web UIs
-- you want the audit trail (drafts, cross-critiques, rejected points, minority report, trajectory ledger) saved on disk automatically
-- you are stress-testing a specific contested empirical claim and want explicit prior / evidence / posterior discipline (opt-in Bayesian Mode; the posterior is a structured stance, not a calibrated probability)
-- you are comfortable trading the four-model coverage of MAD v2.0 for the two-provider Claude+Codex automation
+## Related tools
 
-Use **[`paper-workshop` / CRUCIBLE](https://github.com/tjhavranek/paper-workshop)** if:
-- you want not just a critique but an implemented revision -- a tracked redline and a clean draft with your own numbers re-run before you submit
-- you want a referee fleet built for your specific paper that argues each contested claim from rival schools, rather than a fixed model lineup
-- you already use Claude Code (it is Claude-only; no Codex or other-model access needed)
-- you accept that this is the newest and least-validated of the four -- the rebuild has been demonstrated end-to-end once, not broadly validated (see its repository's `LIMITATIONS.md`)
-
-In practice the four run from lightest to heaviest and from critique to
-rebuild: **Duel** is the lightest manual audit, **MAD** the heaviest
-manual audit, **mad-research** the automated audit memo, and
-**paper-workshop / CRUCIBLE** goes furthest -- it argues the paper and
-then, opt-in, rebuilds it. The first three tell you what is wrong;
-CRUCIBLE argues it out and then helps you fix it.
-
----
+Two Claude Code skills in separate repositories automate the same discipline. **[`mad-research`](https://github.com/tjhavranek/mad-research)** runs a version of the MAD audit as a single command: three independent role streams, an anonymised cross-critique, and a fresh-context Codex synthesis against a locked rubric, with the full audit trail written to disk, plus an opt-in Bayesian Mode for a specific contested empirical claim. It requires Claude Code and an authenticated Codex CLI. **[`paper-workshop`](https://github.com/tjhavranek/paper-workshop)**, run name CRUCIBLE, goes further: it builds a referee fleet for your specific paper, has rival traditions argue each contested claim, and, opt-in, produces a tracked-changes redline and a clean revision with your own analysis re-run. It requires Claude Code only, no Codex. Both are automation-first extensions of the manual protocols here, not replacements for them; see each repository's own README for prerequisites and limitations.
 
 ## How To Use
 
-### A. Use Duel v1.7
+### Use Duel v1.7
 
-1. Open **ChatGPT Plus/Pro** with Agent Mode (browsing/tools enabled).  
-2. Copy the full text from [`protocol/ai_duel_protocol_v1.7.md`](protocol/ai_duel_protocol_v1.7.md).  
-3. Paste it into ChatGPT, replacing the bracketed placeholders with your topic and list of materials.  
-4. Upload your documents (papers, data, code) to ChatGPT as instructed.  
-5. Follow the Agent's instructions to:
-   - log in to Gemini yourself when asked,
-   - copy Gemini's replies back into ChatGPT,
-   - continue the duel until either verified consensus or irreducible disagreement is reached.  
-6. At the end, read the final self-audit and report produced by ChatGPT.
+Open ChatGPT Plus/Pro with Agent Mode enabled and copy the full text of [`protocol/ai_duel_protocol_v1.7.md`](protocol/ai_duel_protocol_v1.7.md) into it, replacing the two bracketed lines with your topic and materials. Upload your documents when asked. Agent Mode's ability to log into Gemini for you depends on a browsing feature that changes over time and sometimes fails; when it does, act as the bridge yourself: open Gemini in your own browser, log in, run the same prompt there, and paste each reply back into ChatGPT labelled as Gemini output. Continue until the two models converge or fully map their disagreement, then read the final self-audit ChatGPT produces.
 
-### B. Use MAD v2.0
+### Use MAD v2.1
 
-1. Open the four models you want to use:
-   - ChatGPT
-   - Claude
-   - Gemini
-   - Grok  
+The web page is the easiest way to run this: <https://tjhavranek.github.io/research-audit-duel-protocol/>. It lays out the roles, fills each seat's role and label into the prompts, and gives you the bundle template, which is the same shape for both rounds.
 
-2. Copy the prompts from [`protocol/ai_mad_protocol_v2.0.md`](protocol/ai_mad_protocol_v2.0.md).
+To run it by hand, open [`protocol/ai_mad_protocol_v2.1.md`](protocol/ai_mad_protocol_v2.1.md), which has the full operational checklist, the four copy-paste prompts, and the rules for building each round's bundle. In short: send the same document to four models under four different roles for Round 1 and collect their independent assessments, feed all four back to all four for Round 2 cross-examination, run the optional Round 3 only if a specific criticism clears the gate described in the protocol, and finish with a fresh ChatGPT conversation as arbiter. Step 5 is not optional: check every surviving quotation against your own file, open every external source the memo names, redo any arithmetic it leans on, and write down what you accepted and rejected.
 
-3. Upload the same source document or problem to each model for **Round 1**, assigning a different role to each model.
-
-4. Run **independent first-pass assessments** in parallel.
-
-5. Collect those Round 1 outputs and feed them back to all models for **Round 2 cross-examination**.
-
-6. **Round 3 is optional** and should be used only when Round 2 leaves a genuine unresolved fault line.
-
-7. Use **ChatGPT as the final arbiter** to synthesize the surviving criticisms, rejected points, minority report, and action list.  
-   For the cleanest setup, either reserve ChatGPT for the arbiter role only or use a **fresh conversation** for the final synthesis.
-
-**Practical note.** Free versions of some models can be sufficient, especially for exploratory use. But users should expect stricter upload limits, smaller context windows, usage caps, and occasional missing file support. For high-stakes work, paid versions are usually more reliable.
-
-**File-format note.** For document audit, PDF is often the safest source format because page references are more stable across models.
-
----
+PDF is usually the safest source format for document audit, since page references tend to stay stable across models.
 
 ## Example
 
-A worked example using MAIVE and WAIVE is available in the [`examples/`](examples/) folder.  
-It shows the full **Duel v1.7** run for the task:
+The only worked example in this repository is a **Duel v1.7** run, in [`examples/`](examples/): `maive.pdf` and `waive_ottawa.pdf` as inputs, `AI_duel_results.docx` as the resulting report, for the task
 
 > HOW CAN I IMPROVE THE PROPOSED WAIVE APPROACH?
 
-with `maive.pdf` and `waive_ottawa.pdf` as inputs and `AI_duel_results.docx` as the resulting audit report.
+No MAD run is published in this repository. The MAD workflow is documented through the protocol file and the web page, not through a worked transcript.
 
-At present, the public worked example illustrates the **Duel** workflow. The **MAD** workflow is currently documented through the protocol files in the [`protocol/`](protocol/) folder.
+## External use
 
----
+Bob Reed (University of Canterbury) ran the public Duel v1.7 workflow on the WAIVE example and posted his reaction:
 
-## Independent Replication (External Use)
+> This is brilliant! I love it! Well done, Zuzana and Tomas. I will definitely employ this in my future work. And very easy to implement! I followed your example and got slightly different results (of course).
 
-The protocol has been independently implemented by external researchers.
-
-For example, Prof. Bob Reed (University of Canterbury) applied the public **Duel v1.7** workflow following the WAIVE example and reported successful execution:
-
-> This is brilliant! I love it! Well done, Zuzana and Tomas. I will definitely employ this in my future work. And very easy to implement!
-> I followed your example and got slightly different results (of course). I then asked ChatGPT to compare my final report with yours and this is what it said (spoiler alert: it strengthens the value of your protocol):
->
-> *The two reports are substantively the same, with only minor stylistic differences. Their convergence is strong evidence that:*
-> - *the key weaknesses of WAIVE have been correctly identified,*
-> - *the improvement path is coherent and defensible,*
-> - *and the final conclusions are not an artifact of one AI's reasoning style.*
-
-This illustrates an intended feature of the protocol: independent runs may differ in surface form while converging on the same substantive conclusions.
-
-Note: the "open Gemini inside ChatGPT" step depends on the current Agent/browser environment. If it fails in a given setup, you can run the same duel by manually copy-pasting between models (human-in-the-loop) without changing the adversarial structure.
+Two independent runs converging on similar conclusions is not evidence that either one is correct; both could share the same blind spot. What it shows is that the protocol's surface form varies between runs while its substance stays checkable against the source document, which is what it is meant to do.
 
 Links:
 - Bob's original comment (MAER-Net): https://www.maer-net.org/post/ai_duel?commentId=0405637a-a4e5-4b40-8498-2fdd496fdad0
 - LinkedIn post: https://www.linkedin.com/posts/zuzanairsova_the-adversarial-advantage-ai-duels-for-meta-analysis-activity-7405164271153803265-xZxQ
-
----
 
 ## Citation
 
@@ -246,9 +111,7 @@ If you use these protocols in your research, please cite:
 
 > Irsova, Z., & Havranek, T. (2026). *Research Audit Protocols: Duel + MAD, v2.0.* GitHub repository. https://doi.org/10.5281/zenodo.19105954
 
-If you specifically want to reference the original two-model workflow as a historical version, the **Duel v1.7** files remain available in this repository.
-
----
+The citation and DOI above cover the archived v2.0 release. The current protocol text is v2.1, in [`protocol/ai_mad_protocol_v2.1.md`](protocol/ai_mad_protocol_v2.1.md). If you specifically want to reference the original two-model workflow, the Duel v1.7 files remain available in this repository too.
 
 ## License
 
