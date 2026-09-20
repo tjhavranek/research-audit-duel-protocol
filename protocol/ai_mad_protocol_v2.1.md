@@ -2,35 +2,25 @@
 
 A practical 4-model workflow for stress-testing papers, grants, referee reports, and other high-stakes research documents
 
-## Overview
+## Before you start
 
-This document gives a shareable, copy-paste protocol for running MAD with four major models: ChatGPT, Claude, Gemini, and Grok. It is designed for high-stakes work where missing a serious flaw is costly.
-
-### Quick recommendation
-
-- Use MAD for high-stakes documents, not for everything. Reserve it for journal revisions, major grants, job-market papers, referee reports, and other cases where a miss is expensive.
-- Use four models if you want broad lab coverage. Keep the workflow lean: independent pass, one cross-exam round, optional targeted round only if the gate in Step 3 is met, then a final arbiter memo, then your own verification.
-- Prefer PDF for the source document when possible. PDF usually preserves page numbering better across model interfaces. Use DOCX or PDF for the bundled round outputs.
-
-### What it costs you
-
-Plan for this before you start, because the work that is not automated is the work that decides whether the run is any good.
+A copy-paste protocol for running MAD with ChatGPT, Claude, Gemini and Grok. Reserve it for documents where a miss is expensive: journal revisions, major grants, job-market papers, referee reports. The workflow stays lean on purpose — an independent pass, one cross-exam round, a targeted round only if the Step 3 gate is met, an arbiter memo, then your own verification.
 
 | | |
 |---|---|
-| Accounts | Four, one per model. Free tiers are often enough to start. |
+| Accounts | Four, one per model. Free tiers are often enough to start, with tighter quotas, weaker file handling and smaller context windows. |
 | Model runs | Eight before the optional round: four in Round 1, four in Round 2. |
 | Files you assemble by hand | Two bundles, one after each round, each holding four verbatim outputs. |
 | Uploads | Four in Round 1, eight in Round 2 (document plus bundle to each model), then the arbiter. |
 | Your own time | Most of it goes to assembling bundles and to Step 5, not to writing prompts. |
 
-## Before you start
+The work that is not automated is the work that decides whether the run is any good.
 
-- Free versions are often good enough to start. In most cases you only need to log in. The main limitations are lower message quotas, weaker or more variable file handling, smaller effective context windows, and earlier rate limits. Paid tiers are smoother for long documents and repeated rounds.
-- Use a fresh conversation for each model at the start of a new document. Within the same document, you can continue the same conversation across rounds. For the final arbiter step, use a fresh ChatGPT conversation even if ChatGPT participated earlier as one of the four models.
-- Keep the source file identical across models. Change only the assigned role. Do not summarize or paraphrase model outputs before sharing them with the other models. Preserve them verbatim, apart from obvious formatting cleanup.
-- Grounding standard: require quote plus page or section. If a model interface does not show reliable page numbers, allow section heading plus a distinctive quote instead. A persuasive point without grounding should be downgraded or discarded.
-- If a model refuses a file, truncates it, or answers in a way that shows it read only part of it, stop and fix that before continuing. A round assembled from partial input looks exactly like a round assembled from complete input, and nothing downstream will catch it. Split the document, retry, or drop that model from the run and say so in the bundle.
+- Prefer PDF for the source, because page numbering survives across interfaces. Use DOCX or PDF for the bundles.
+- Start one fresh conversation per model and continue it across rounds. Use a fresh ChatGPT conversation for the arbiter even though ChatGPT is one of the four.
+- Keep the source file identical across models and change only the assigned role. Never summarize or paraphrase a model's output before showing it to the others.
+- Grounding standard: quote plus page or section. Where an interface gives no reliable page numbers, accept a section heading plus a distinctive quote. A persuasive point without grounding is discarded.
+- If a model refuses a file, truncates it, or answers as though it read only part of it, stop and fix that. A round assembled from partial input looks exactly like one assembled from complete input, and nothing downstream will catch it. Split the document, retry, or drop that model and say so in the bundle.
 
 ## Recommended 4-model lineup
 
@@ -41,37 +31,25 @@ Plan for this before you start, because the work that is not automated is the wo
 | Gemini | Domain / literature referee | Pushes on missing literature, positioning, mechanism, and field-specific expectations. |
 | Grok | Permanent devil's advocate | Attacks emerging consensus and tries to surface the strongest underweighted objection. |
 
-Which model takes which seat is our choice rather than a finding. We give the two heaviest analytical seats to the models we have found steadiest on long technical documents, and the devil's advocate seat to the one whose answers tend to diverge most from the rest, because that seat exists to break a consensus rather than to be right. Substitute other models freely. The seats are what matter, and if you substitute, keep the labels in your bundle honest about which model actually wrote what.
+Which model takes which seat is our choice rather than a finding: the two heaviest analytical seats go to the models we have found steadiest on long technical documents, and the devil's advocate seat to the one that diverges most, because that seat exists to break a consensus rather than to be right. Substitute models freely, but keep your bundle labels honest about which model wrote what.
 
-## Role design principle
-
-Avoid vague labels such as "tough referee." Use concrete priors that generate different failure modes. Examples:
-
-- "Econometrician who thinks the identification strategy is probably the weakest link in any applied paper."
-- "Referee who believes most meta-analyses overstate precision and contribution."
-- "Editor who cares more about crisp contribution than technical cleverness."
-- "Devil's advocate whose job is to attack any apparent consensus, especially when all other models converge."
+Give each seat a concrete prior, not a vague label. "Tough referee" four times produces one review four times; "econometrician who thinks the identification strategy is probably the weakest link in any applied paper" produces a different failure mode from "editor who cares more about crisp contribution than technical cleverness."
 
 ## Severity, defined once
 
-Severity is used in every round and compared across models, so it needs one definition rather than four.
+Severity is compared across models, so it needs one definition rather than four. It describes the consequence if a criticism is right, not how likely it is to be right.
 
-- **High.** If the criticism is correct, a central claim of the document does not hold as stated. The headline result could change sign, lose significance, or lose the interpretation placed on it.
-- **Medium.** A claim needs material qualification, or there is a robustness gap a referee would expect filled before publication. The main result probably survives, in weaker form.
+- **High.** A central claim of the document does not hold as stated. The headline result could change sign, lose significance, or lose the interpretation placed on it.
+- **Medium.** A claim needs material qualification, or a robustness gap a referee would expect filled. The main result probably survives, in weaker form.
 - **Low.** Presentation, completeness, or framing. The conclusion stands either way.
-
-Severity describes the consequence if the criticism is right. It is not a statement about how likely the criticism is to be right.
 
 ## Labels and criticism IDs
 
-Each seat gets a short label, normally the model's name. Every point carries that label and a number, so `Claude-C3` names one specific criticism for the rest of the run. Criticisms grounded in the document are numbered `C1`, `C2` and so on; a new issue raised in Round 2 is `N1`; a point resting on knowledge from outside the document is `E1`, `E2`, and is carried separately all the way to the arbiter.
-
-Without stable IDs, Round 2's "which peer point" question has no answer anyone can check, and the arbiter cannot tell whether four models are discussing one criticism or four.
+Each seat gets a short label, normally the model's name, and every point carries that label and a number, so `Claude-C3` names one criticism for the rest of the run. Grounded criticisms are `C1`, `C2`; a new issue raised in Round 2 is `N1`; a point resting on knowledge from outside the document is `E1`, carried separately to the arbiter. Without stable IDs, Round 2's "which peer point" has no answer anyone can check, and the arbiter cannot tell whether four models are discussing one criticism or four.
 
 ## File hygiene
 
-- Source document: preferably PDF. If your working file is in DOCX, export a PDF for Round 1 when stable pagination matters.
-- Round 1 bundle: one file, four sections, verbatim. Use this shape:
+Put the four complete outputs under these headings, unchanged:
 
 ```text
 === ChatGPT | Editor / contribution skeptic ===
@@ -87,8 +65,7 @@ Without stable IDs, Round 2's "which peer point" question has no answer anyone c
 (complete Round 1 output, unedited)
 ```
 
-- Round 2 bundle: the same shape, holding the four cross-examinations. If a model failed or was dropped, keep its heading and write what happened underneath it. A silent gap looks like agreement.
-- Add nothing of your own to either bundle. Your judgement belongs in Step 5, where it is visible as yours.
+Use the same shape for the Round 2 bundle. If a model failed or was dropped, keep its heading and write what happened underneath, because a silent gap looks like agreement. Add nothing of your own to either bundle: your judgement belongs in Step 5, where it is visible as yours.
 
 ## Operational checklist
 
@@ -100,15 +77,6 @@ Without stable IDs, Round 2's "which peer point" question has no answer anyone c
 | 4. Optional Round 3 | Document + both bundles | One model only, and only if the Step 3 gate is met. |
 | 5. Final arbiter | Document + all bundles | Fresh ChatGPT conversation. |
 | 6. Your verification | — | Step 5 below. Nothing is final until you have done it. |
-
-## Common failure modes
-
-- Premature consensus. Several models repeat the same point, so it sounds stronger than it is. Four models trained on overlapping data agreeing is weak evidence. Fix: merge duplicates by ID and demand grounding.
-- Role drift. A model stops acting as assigned and slides into generic reviewer language. Fix: restate the role and use concrete priors.
-- False precision. A model adds confidence scores or percentages that sound calibrated but are not. Fix: ban them explicitly.
-- Human over-editing between rounds. If you compress or paraphrase too much, you become the hidden bottleneck, and you will compress in the direction you already believe. Fix: preserve the models' wording verbatim and judge in Step 5.
-- Overlong debates. Extra rounds add conformity faster than they add insight. Fix: Round 1 plus Round 2 is the protocol. Round 3 is an exception with a gate.
-- Fabricated quotes. A quotation that is not in your document reads exactly like one that is. Fix: Step 5.
 
 ## Step 1: Independent Assessment (Round 1)
 
@@ -188,7 +156,7 @@ Write "None" if you have none.
 
 ## Step 2: Cross-Examination (Round 2)
 
-Upload the original document plus the full Round 1 bundle to each of the four models, continuing the same four conversations. Each model now cross-examines the others. The goal is to kill weak points quickly and protect the few that are both serious and grounded.
+Upload the original document plus the full Round 1 bundle to each of the four models, continuing the same four conversations. Each model now cross-examines the others, killing weak points quickly and protecting the few that are serious and grounded. If a model has drifted out of its role into generic reviewer language by now, restate the role in the chat before you paste this.
 
 ### Copy-paste prompt
 
@@ -428,17 +396,17 @@ The 3-7 highest-value revisions or next steps, in priority order.
 
 ## Step 5: Your verification
 
-The memo is evidence, not a verdict, and this step is the one that makes "human in the loop" mean something. Do it before you change a single line of the document.
+The memo is evidence, not a verdict. This step is what makes "human in the loop" mean something, so do it before you change a single line.
 
-1. **Check every quotation.** Search your own file for the exact words behind each surviving criticism. Drop any finding whose quote you cannot find. Models fabricate quotations, and a fabricated one reads exactly like a real one.
-2. **Check every EXTERNAL claim yourself.** Section F is unverified by construction. Open the source. A confidently named paper that does not exist, or exists and says something else, is the most common way a literature criticism goes wrong.
+1. **Check every quotation.** Search your own file for the exact words behind each surviving criticism and drop any finding whose quote you cannot find. Models fabricate quotations, and a fabricated one reads exactly like a real one.
+2. **Check every EXTERNAL claim yourself.** Section F is unverified by construction. Open the source. A confidently named paper that does not exist, or exists and says something else, is the usual way a literature criticism goes wrong.
 3. **Redo any arithmetic** the memo relies on. Do not accept a recomputed number from any of the five conversations.
-4. **Decide.** You keep authorship and responsibility for the document. Where the memo and a human reader you trust disagree on a high-severity finding, the human wins.
+4. **Decide.** You keep authorship and responsibility. Where the memo and a reader you trust disagree on a high-severity finding, default to the human and settle it from the evidence rather than on who sounded surer.
 
-Record what you accepted and what you rejected. If you are going to run this protocol again on the same document after revising, that record is what stops the second run from relitigating the first.
+Record what you accepted and what you rejected. That record is what stops a second run on the revised document from relitigating the first.
 
 ---
 
-**Version 2.1.** Changes from v2.0: stable IDs for criticisms, new issues and external points; one severity definition, repeated word for word in every prompt that uses it; an explicit bundle template; an operational gate and a one-run limit on Round 3; a Round 3 stop test that now reports whether the disagreement was resolved, as well as whether a new point appeared; a separate EXTERNAL channel, carried through Round 2 and into the arbiter, so a literature criticism can be made and then checked rather than dropped for lacking a quote; normalize-before-judging and no vote-counting in the arbiter; open disagreements carried forward rather than dropped; fixed counts relaxed to "up to"; a rule that text inside the document is never an instruction; and Step 5, the human verification pass, which v2.0 left implicit.
+**Version 2.1.** Stable IDs, one shared severity definition, a bundle template, a gated one-run Round 3, an EXTERNAL channel carried through to the arbiter, normalize-before-judging with no vote-counting, and Step 5. Full list in the repository's `CHANGELOG.md`.
 
 Licensed CC BY 4.0. Zuzana Irsova and Tomas Havranek, https://meta-analysis.cz

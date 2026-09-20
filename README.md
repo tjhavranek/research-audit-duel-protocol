@@ -1,5 +1,9 @@
 # Research Audit Protocols: Duel + MAD
 
+[![Run MAD in your browser](https://img.shields.io/badge/Run%20MAD-in%20your%20browser-4a3f8f?style=for-the-badge)](https://tjhavranek.github.io/research-audit-duel-protocol/)
+
+### ▶ [tjhavranek.github.io/research-audit-duel-protocol](https://tjhavranek.github.io/research-audit-duel-protocol/)
+
 ![Duel](https://img.shields.io/badge/Duel-v1.7-blue)
 ![MAD](https://img.shields.io/badge/MAD-v2.1-purple)
 [![mad-research](https://img.shields.io/badge/mad--research-v1.0.1-blue)](https://github.com/tjhavranek/mad-research)
@@ -21,7 +25,7 @@ This repository holds two human-in-the-loop adversarial protocols for high-stake
 
 Both are plain text you copy and paste, and neither needs anything installed.
 
-The easiest way to run MAD is the web page at **https://tjhavranek.github.io/research-audit-duel-protocol/**. It lays out the four roles, fills each model's role and label into the prompts, and hands you the bundle template. Your document never goes near the page. It runs entirely in your browser, and the only thing it fetches is the protocol file sitting beside it in this repository, so nothing you type or upload is transmitted anywhere. The prompts it copies are read out of [`protocol/ai_mad_protocol_v2.1.md`](protocol/ai_mad_protocol_v2.1.md) when the page loads, so that file is the single source of truth. Edit it and the buttons copy the edited text.
+The page linked above is the easiest way to run MAD. It lays out the four roles, fills each model's role and label into the prompts, and hands you the bundle template. Nothing you type there leaves your browser. Its prompts are read out of [`protocol/ai_mad_protocol_v2.1.md`](protocol/ai_mad_protocol_v2.1.md) as the page loads, so that file is the single source of truth: edit it and the buttons copy the edited text.
 
 ## What it costs you
 
@@ -36,54 +40,29 @@ Running MAD end to end, before the optional Round 3:
 
 Duel v1.7 is lighter: two accounts, one long conversation each, no bundles to assemble.
 
-## Available Protocols
+## The two protocols
 
-### Duel v1.7
-Canonical prompt file: [`protocol/ai_duel_protocol_v1.7.md`](protocol/ai_duel_protocol_v1.7.md)
+Use **MAD** when a miss would be expensive: a journal revision, a major grant, a job-market paper, a referee report. Use **Duel** when you are testing an idea rather than auditing a finished paper, or when four conversations is more than the question deserves. PDF is the safest source format for either, since page references stay stable across models.
 
-The original protocol. ChatGPT forms an independent view first, then argues it out with Gemini until they converge or fully map their disagreement, then audits itself against the view it wrote before the argument started. It is simpler and faster to run than MAD.
+### MAD v2.1 — four models
 
-### MAD v2.1
-Canonical prompt file: [`protocol/ai_mad_protocol_v2.1.md`](protocol/ai_mad_protocol_v2.1.md)  
-Shareable handout: [`protocol/ai_mad_protocol_v2.1.pdf`](protocol/ai_mad_protocol_v2.1.pdf)  
-Run it in the browser: <https://tjhavranek.github.io/research-audit-duel-protocol/>
+[`protocol/ai_mad_protocol_v2.1.md`](protocol/ai_mad_protocol_v2.1.md) &middot; [PDF handout](protocol/ai_mad_protocol_v2.1.pdf) &middot; [run it in the browser](https://tjhavranek.github.io/research-audit-duel-protocol/)
 
-Four models each read your document under a different assigned role, cross-examine each other's output, and a fresh conversation arbitrates.
+Four models each read your document under a different assigned role, cross-examine each other's output, and a fresh conversation arbitrates. Use the page, or work from the protocol file, which has the operational checklist, the four prompts and the bundle rules. In short: send the same document to four models under four different roles for Round 1, feed all four answers back to all four for Round 2 cross-examination, run the optional Round 3 only if a criticism clears the gate, and finish with a fresh ChatGPT conversation as arbiter. Step 5 is not optional: check every surviving quotation against your own file, open every external source the memo names, redo any arithmetic it leans on, and write down what you accepted and rejected.
 
-Version 2.1 fixes what v2.0 got wrong in practice. Criticisms now carry stable IDs, so a model in Round 2 can name the point it is attacking and the arbiter can tell one criticism from four. Severity is defined once and shared by every round instead of being left to each model. Round 3 has a real gate and a one-run limit, because "a genuine unresolved fault line" was not a test anyone could actually apply. Claims that rest on knowledge from outside the document get their own channel, so a missing-literature criticism can be made and then checked rather than trusted on sight. And the protocol now ends with your own verification pass over every quote and every external claim, which v2.0 left implicit. The rest is in the [changelog](CHANGELOG.md).
+Version 2.1 fixes what v2.0 got wrong in practice. Criticisms carry stable IDs, so Round 2 can name the point it is attacking. Severity is defined once rather than four times. Round 3 gets a real gate and a one-run limit, because "a genuine unresolved fault line" was not a test anyone could apply. Claims resting on knowledge outside the document get their own channel, so a missing-literature criticism can be checked rather than trusted. And the protocol ends with your own verification pass, which v2.0 left implicit. The rest is in the [changelog](CHANGELOG.md).
 
-Version 2.0 stays in the repository at [`protocol/ai_mad_protocol_v2.0.md`](protocol/ai_mad_protocol_v2.0.md) and [`protocol/ai_mad_protocol_v2.0.pdf`](protocol/ai_mad_protocol_v2.0.pdf), because it is the version the Zenodo DOI below minted, exactly as v1.7 stayed in the repository once v2.0 first landed. It is not the current version; use v2.1.
+Version 2.0 stays in the repository at [`ai_mad_protocol_v2.0.md`](protocol/ai_mad_protocol_v2.0.md) and [`.pdf`](protocol/ai_mad_protocol_v2.0.pdf), because that is what the Zenodo DOI below minted. It is not the current version; use v2.1.
 
-## Which Protocol Should I Use?
+### Duel v1.7 — two models
 
-Use **Duel v1.7** if:
-- you want a faster and simpler workflow
-- you are testing an idea, method, or draft at moderate stakes
-- you prefer one main orchestrator inside ChatGPT
+[`protocol/ai_duel_protocol_v1.7.md`](protocol/ai_duel_protocol_v1.7.md)
 
-Use **MAD v2.1** if:
-- the question is important and a miss would be costly
-- you want multiple independent first-pass critiques
-- you want structured cross-examination across several models
-- you are auditing a paper, grant proposal, referee report, or research design under serious uncertainty
+ChatGPT forms an independent view first, then argues it out with Gemini until they converge or fully map their disagreement, then audits itself against the view it wrote before the argument started. Copy the whole file into ChatGPT Plus/Pro with Agent Mode, replace the two bracketed lines with your topic and materials, and upload your documents when asked. Agent Mode's ability to log into Gemini for you depends on a browsing feature that changes and sometimes fails. When it does, be the bridge yourself: open Gemini, log in, run the same prompt there, and paste each reply back into ChatGPT labelled as Gemini output.
 
 ## Related tools
 
-Two Claude Code skills in separate repositories automate the same discipline. **[`mad-research`](https://github.com/tjhavranek/mad-research)** runs a version of the MAD audit as a single command: three independent role streams, an anonymised cross-critique, and a fresh-context Codex synthesis against a locked rubric, with the full audit trail written to disk, plus an opt-in Bayesian Mode for a specific contested empirical claim. It requires Claude Code and an authenticated Codex CLI. **[`paper-workshop`](https://github.com/tjhavranek/paper-workshop)**, run name CRUCIBLE, goes further: it builds a referee fleet for your specific paper, has rival traditions argue each contested claim, and, opt-in, produces a tracked-changes redline and a clean revision with your own analysis re-run. It requires Claude Code only, no Codex. Both are automation-first extensions of the manual protocols here, not replacements for them; see each repository's own README for prerequisites and limitations.
-
-## How To Use
-
-### Use Duel v1.7
-
-Open ChatGPT Plus/Pro with Agent Mode enabled and copy the full text of [`protocol/ai_duel_protocol_v1.7.md`](protocol/ai_duel_protocol_v1.7.md) into it, replacing the two bracketed lines with your topic and materials. Upload your documents when asked. Agent Mode's ability to log into Gemini for you depends on a browsing feature that changes over time and sometimes fails; when it does, act as the bridge yourself: open Gemini in your own browser, log in, run the same prompt there, and paste each reply back into ChatGPT labelled as Gemini output. Continue until the two models converge or fully map their disagreement, then read the final self-audit ChatGPT produces.
-
-### Use MAD v2.1
-
-The web page is the easiest way to run this: <https://tjhavranek.github.io/research-audit-duel-protocol/>. It lays out the roles, fills each seat's role and label into the prompts, and gives you the bundle template, which is the same shape for both rounds.
-
-To run it by hand, open [`protocol/ai_mad_protocol_v2.1.md`](protocol/ai_mad_protocol_v2.1.md), which has the full operational checklist, the four copy-paste prompts, and the rules for building each round's bundle. In short: send the same document to four models under four different roles for Round 1 and collect their independent assessments, feed all four back to all four for Round 2 cross-examination, run the optional Round 3 only if a specific criticism clears the gate described in the protocol, and finish with a fresh ChatGPT conversation as arbiter. Step 5 is not optional: check every surviving quotation against your own file, open every external source the memo names, redo any arithmetic it leans on, and write down what you accepted and rejected.
-
-PDF is usually the safest source format for document audit, since page references tend to stay stable across models.
+Two Claude Code skills in separate repositories automate the same discipline. **[`mad-research`](https://github.com/tjhavranek/mad-research)** runs the audit as one command, writing the full trail to disk, with an opt-in Bayesian Mode for a specific contested empirical claim; it needs Claude Code and an authenticated Codex CLI. **[`paper-workshop`](https://github.com/tjhavranek/paper-workshop)**, run name CRUCIBLE, goes further, producing a tracked-changes redline and a clean revision with your own analysis re-run; Claude Code only. Both extend the manual protocols here rather than replacing them. See each repository's README for prerequisites and limitations.
 
 ## Example
 
@@ -99,11 +78,9 @@ Bob Reed (University of Canterbury) ran the public Duel v1.7 workflow on the WAI
 
 > This is brilliant! I love it! Well done, Zuzana and Tomas. I will definitely employ this in my future work. And very easy to implement! I followed your example and got slightly different results (of course).
 
-Two independent runs converging on similar conclusions is not evidence that either one is correct; both could share the same blind spot. What it shows is that the protocol's surface form varies between runs while its substance stays checkable against the source document, which is what it is meant to do.
+Two runs converging is not evidence that either is correct, since both could share the same blind spot. What it shows is surface form varying between runs while the substance stays checkable against the source document, which is what the protocol is for.
 
-Links:
-- Bob's original comment (MAER-Net): https://www.maer-net.org/post/ai_duel?commentId=0405637a-a4e5-4b40-8498-2fdd496fdad0
-- LinkedIn post: https://www.linkedin.com/posts/zuzanairsova_the-adversarial-advantage-ai-duels-for-meta-analysis-activity-7405164271153803265-xZxQ
+[Bob's comment on MAER-Net](https://www.maer-net.org/post/ai_duel?commentId=0405637a-a4e5-4b40-8498-2fdd496fdad0) &middot; [LinkedIn post](https://www.linkedin.com/posts/zuzanairsova_the-adversarial-advantage-ai-duels-for-meta-analysis-activity-7405164271153803265-xZxQ)
 
 ## Citation
 

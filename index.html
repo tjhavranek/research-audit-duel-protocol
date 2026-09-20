@@ -33,7 +33,7 @@
     <p class="lead">Round 1 gives you four independent readings, each blind to the others. Round 2 shows every model what the other three said and asks it to kill the weak points. A fresh conversation then judges what survived, and you check the survivors against your own file before you believe any of it.</p>
     <p class="points">Built for work where missing a serious flaw is expensive: a journal revision, a major grant, a job-market paper, a referee report. It is not worth running on everything.</p>
     <p class="byline">By Zuzana Iršová and Tomáš Havránek, Charles University &middot; <a class="nowrap" href="https://meta-analysis.cz">meta-analysis.cz</a></p>
-    <p class="note">The page runs entirely in your browser. Your document is never uploaded here, and nothing you type on this page leaves it.</p>
+    <p class="note">Your document never comes near this page, and nothing you type here leaves your browser.</p>
   </section>
 
   <dl class="cost">
@@ -45,8 +45,8 @@
 
   <aside class="boundary" aria-labelledby="boundary-h">
     <h2 id="boundary-h">Before you paste anything</h2>
-    <p>Whatever you upload goes to four companies rather than one. That is the price of the coverage. Turn off training on your data where the provider allows it (<a href="https://help.openai.com/en/articles/7730893-chatgpt-privacy-practices">ChatGPT</a>, <a href="https://privacy.claude.com/en/articles/10023580-is-my-data-used-for-model-training">Claude</a>, <a href="https://support.google.com/gemini/answer/13594961">Gemini</a>) and check what your institution allows before you start. Opting out of training does not delete what you already sent.</p>
-    <p>If the document is not yours, the decision is not yours either. A manuscript you are refereeing, a grant you are evaluating, a colleague&rsquo;s unpublished draft: uploading it means making a confidentiality choice on someone else&rsquo;s behalf, four times over. Many journals and funders forbid it outright, and some <a href="https://erc.europa.eu/system/files/2026-03/Use-AI-grant-proposal-evaluation.pdf">rule out AI assessment of a proposal altogether</a>, including a model you run on your own machine. Find the policy that binds you before you start, not after.</p>
+    <p>Whatever you upload goes to four companies rather than one. Turn off training on your data where the provider allows it (<a href="https://help.openai.com/en/articles/7730893-chatgpt-privacy-practices">ChatGPT</a>, <a href="https://privacy.claude.com/en/articles/10023580-is-my-data-used-for-model-training">Claude</a>, <a href="https://support.google.com/gemini/answer/13594961">Gemini</a>) and check what your institution allows before you start. Opting out of training does not delete what you already sent.</p>
+    <p>If the document is not yours, the decision is not yours either. A manuscript you are refereeing, a grant you are evaluating, a colleague&rsquo;s unpublished draft: uploading it means making a confidentiality choice on someone else&rsquo;s behalf, four times over. Many journals and funders forbid it outright, and some <a href="https://erc.europa.eu/system/files/2026-03/Use-AI-grant-proposal-evaluation.pdf">rule out AI assessment of a proposal altogether</a>, including a model you run on your own machine. Find the policy that binds you first.</p>
   </aside>
 
   <noscript><p class="noscript">The copy buttons need JavaScript. Without it, open <a href="protocol/ai_mad_protocol_v2.1.md">protocol/ai_mad_protocol_v2.1.md</a> and copy each prompt out of the file by hand, replacing the bracketed placeholders yourself.</p></noscript>
@@ -62,8 +62,8 @@
 
       <li>
         <h3>Set the lineup</h3>
-        <p>Four models, four different jobs. Which seat goes to which model is our choice rather than a finding: we give the two heaviest analytical seats to the models we have found steadiest on long technical documents, and the devil&rsquo;s advocate seat to the one whose answers tend to diverge most from the rest, because that seat exists to break a consensus rather than to be right.</p>
-        <p>A vague label such as &ldquo;tough referee&rdquo; gets you four copies of one review. What produces different failure modes is a concrete prior, so each role below says what it suspects before it has read anything. Edit them freely if your document calls for something else. You can also run different models in these seats, though the page keeps these four names in the prompts and the bundle template, so change the names in your own bundle headings to match.</p>
+        <p>Four models, four different jobs. Which model takes which seat is our choice, not a finding: the two heavy analytical seats go to the ones we have found steadiest on long technical documents, and the devil&rsquo;s advocate seat to the one that diverges most, because that seat exists to break a consensus rather than to be right.</p>
+        <p>A vague label such as &ldquo;tough referee&rdquo; gets you four copies of one review. What produces different failure modes is a concrete prior, so each role below says what it suspects before it has read anything. Edit them freely. You can run other models in these seats too, though the page keeps these four names, so match them in your own bundle headings.</p>
         <div class="lineup" id="lineup"></div>
         <p class="hint reset-row"><button type="button" class="linkish" id="reset-roles">Reset the roles to the protocol&rsquo;s own lineup</button></p>
       </li>
@@ -71,27 +71,27 @@
       <li>
         <h3>Round 1: four independent readings</h3>
         <p class="uploads"><b>Upload:</b> the document, to each of four fresh conversations.</p>
-        <p>Give all four models the same file. Change nothing but the role and the label. No model sees another&rsquo;s answer in this round. Each is told it is one seat in a multi-model test and to work as though the others were not there, which is the point: four readings that were never negotiated.</p>
+        <p>Give all four the same file, changing nothing but the role and the label. No model sees another&rsquo;s answer in this round, which is the point: four readings that were never negotiated.</p>
         <div class="fanout" data-round="1" data-step="1"></div>
-        <p class="hint">Use a PDF if you can. Page numbers survive across interfaces better than they do in a Word file, and every criticism has to carry a quote and a page. If a model truncates the file or answers as though it read only part of it, fix that before continuing rather than working from what came back.</p>
+        <p class="hint">Use a PDF if you can: page numbers survive across interfaces, and every criticism has to carry a quote and a page. If a model truncates the file or answers as though it read only part of it, fix that before you continue.</p>
       </li>
 
       <li>
         <h3>Round 2: cross-examination</h3>
         <p class="uploads"><b>Upload:</b> the document and your Round 1 bundle, to the same four conversations.</p>
-        <p>First build the bundle: one file, the four Round 1 answers in full, each under a heading naming the model and its seat. Keep them verbatim. If you tidy them here you become the hidden bottleneck, and you will tidy in the direction you already believe. If a model failed, keep its heading and say so underneath, because a silent gap reads as agreement.</p>
+        <p>First build the bundle: one file, the four Round 1 answers in full, each under a heading naming the model and its seat. Keep them verbatim. Tidy them and you become the hidden bottleneck, editing in the direction you already believe. If a model failed, keep its heading and say so underneath, because a silent gap reads as agreement.</p>
         <div class="copy" data-template="bundle">
           <div class="copy-row"><button type="button" class="btn">Copy the bundle template</button><p class="status" role="status"></p></div>
           <details class="show"><summary>Show it</summary><textarea readonly rows="6" aria-label="The bundle template" spellcheck="false"></textarea></details>
         </div>
         <p class="hint">The same shape does for the Round 2 bundle you will assemble before the arbiter. Only the contents change.</p>
         <div class="fanout" data-round="2" data-step="2"></div>
-        <p class="hint">This is the round that does the work. Round 1 hands you about twenty criticisms and most are generic. Round 2 is where they die. Every criticism carries an ID from Round 1, such as <code>Claude-C3</code>, so the models can name exactly which point they are attacking.</p>
+        <p class="hint">This is the round that does the work: most of what Round 1 produced is generic, and this is where it dies. Every criticism carries an ID such as <code>Claude-C3</code>, so a model can name exactly which point it is attacking. If one has drifted back into a generic reviewer by now, restate its role in the chat.</p>
       </li>
 
       <li>
         <h3>Round 3, only if the gate is met</h3>
-        <p>Run this only when, for one and the same criticism, one model said keep and another said reject, both cited evidence from the document, and it is high severity. Anything less is not a fault line. Two models saying &ldquo;identification is weak&rdquo; and &ldquo;parallel trends is not defended&rdquo; are agreeing in different words. Two models reading one table and disagreeing about whether it shows what the text claims are not.</p>
+        <p>Run this only when, for one and the same criticism, one model said keep and another said reject, both cited evidence from the document, and it is high severity. Two models saying &ldquo;identification is weak&rdquo; and &ldquo;parallel trends is not defended&rdquo; are agreeing in different words. Two models reading one table and disagreeing about whether it shows what the text claims are not.</p>
         <p>Run it once, on one model. Whatever it leaves unsettled goes to the arbiter as an open disagreement rather than to a fourth round.</p>
         <div class="targeted">
           <label class="field"><span>The criticism still contested</span>
@@ -111,37 +111,37 @@
           </label>
         </div>
         <div class="fanout fanout-one" data-round="3" data-step="3"></div>
-        <p class="hint">Name the criticism before you copy. The prompt has to say which point Round 2 could not settle, so the button stays off until you give it an ID. Send it to one model, not four.</p>
+        <p class="hint">The button stays off until you name the criticism: the prompt says nothing without it.</p>
       </li>
 
       <li>
         <h3>The arbiter</h3>
         <p class="uploads"><b>Upload:</b> the document and both bundles, to a fresh ChatGPT conversation.</p>
-        <p>Collect the four Round 2 answers into a second bundle first, in the same shape as the first one. Then open a fresh conversation, fresh even though ChatGPT was one of the four. A model that argued a position in Round 2 will defend its own phrasing when you ask it to judge. The prompt makes it merge the duplicate criticisms first and then rule on the evidence, and it forbids counting how many models agreed, because four models trained on overlapping data agreeing is weak evidence.</p>
+        <p>Collect the four Round 2 answers into a second bundle, same shape as the first. Then open a fresh conversation, fresh even though ChatGPT was one of the four: a model that argued a position in Round 2 will defend its own phrasing when asked to judge. The prompt makes it merge duplicates before ruling on the evidence, and forbids counting how many models agreed, because four models trained on overlapping data agreeing is weak evidence.</p>
         <div class="fanout fanout-one" data-round="4" data-step="4"></div>
         <figure class="specimen">
           <figcaption class="specimen-title">What the arbiter memo contains</figcaption>
           <ol role="list">
-            <li><b>Final verdict:</b> four to six sentences.</li>
-            <li><b>Up to 5 surviving criticisms:</b> each with severity, the best quote and page behind it, why it survived, and a concrete fix.</li>
-            <li><b>Points that were rejected:</b> what sounded plausible in Round 1 and failed under scrutiny.</li>
-            <li><b>Open disagreements:</b> what the rounds could not settle, and what would settle it.</li>
-            <li><b>Minority report:</b> the dissenting objection that lost and still deserves attention.</li>
-            <li><b>External claims to check:</b> anything resting on knowledge from outside your document, flagged as unverified.</li>
-            <li><b>Action list:</b> three to seven revisions in priority order.</li>
+            <li><b>Final verdict,</b> in four to six sentences.</li>
+            <li><b>Up to 5 surviving criticisms,</b> each with severity, the quote and page behind it, and a fix.</li>
+            <li><b>Points that were rejected,</b> and why they failed.</li>
+            <li><b>Open disagreements,</b> and what would settle them.</li>
+            <li><b>Minority report:</b> the objection that lost and still deserves attention.</li>
+            <li><b>External claims to check,</b> flagged as unverified.</li>
+            <li><b>Action list,</b> three to seven revisions in priority order.</li>
           </ol>
         </figure>
-        <p class="hint">Read the rejected points, the open disagreements and the minority report before the action list. Those are where a four-model run earns its cost: they exist only because four readings disagreed, so one model asked the same question has nothing to put in them.</p>
+        <p class="hint">Read the rejected points, the open disagreements and the minority report before the action list. They exist only because four readings disagreed, which is what you paid for.</p>
       </li>
 
       <li>
         <h3>Check it yourself</h3>
-        <p>The memo is evidence, not a verdict, and this step is what makes &ldquo;human in the loop&rdquo; mean anything. Do it before you change a line.</p>
+        <p>The memo is evidence, not a verdict. Do this before you change a line.</p>
         <ol class="mini">
           <li><b>Search your own file for every quotation</b> behind a surviving criticism. Drop any you cannot find. Models fabricate quotations, and a fabricated one reads exactly like a real one.</li>
           <li><b>Open every external source</b> the memo names. Those points are unverified by construction. A confidently cited paper that does not exist, or exists and says something else, is the usual way a literature criticism goes wrong.</li>
           <li><b>Redo any arithmetic</b> the memo leans on. Do not accept a recomputed number from any of the five conversations.</li>
-          <li><b>Decide, and write down what you decided.</b> You keep authorship and responsibility for the document. Where the memo and a human reader you trust disagree on a high-severity finding, default to the human and go and settle it on the evidence rather than leaving it to whoever sounded surer. Keeping a note of what you accepted and rejected is what stops a second run relitigating the first.</li>
+          <li><b>Decide, and write down what you decided.</b> You keep authorship and responsibility. Where the memo and a reader you trust disagree on a high-severity finding, settle it on the evidence rather than on who sounded surer. The note of what you accepted is what stops a second run relitigating the first.</li>
         </ol>
       </li>
 
@@ -150,48 +150,37 @@
 
   <section class="others" aria-labelledby="others-h">
     <h2 id="others-h">Lighter, and heavier</h2>
-    <p class="intro">MAD sits in the middle of a range. Below it is a two-model version you can run in an afternoon. Above it are two tools that automate the same discipline for people who already work in an agent CLI.</p>
 
     <details class="row" id="duel">
       <summary><h3 class="row-title">Duel v1.7: two models instead of four</h3><span class="row-meta">The original protocol &middot; ChatGPT against Gemini &middot; one long prompt, no bundles</span></summary>
       <div class="row-body">
-        <p>ChatGPT forms its own view first and calls that its anchor, then argues with Gemini until they either converge or map their disagreement completely, and finally audits itself against the anchor it wrote before the argument started. You are the bridge between the two chats whenever the browsing agent cannot log in for you, which is often.</p>
-        <p>Use it when the stakes are moderate, when you are testing an idea rather than auditing a finished paper, or when four conversations is more than the question deserves.</p>
+        <p>ChatGPT forms its own view first and calls that its anchor, then argues with Gemini until they converge or map their disagreement, then audits itself against the anchor. You are the bridge between the two chats whenever the browsing agent cannot log in for you, which is often. Use it when four conversations is more than the question deserves.</p>
         <div class="copy" data-whole="protocol/ai_duel_protocol_v1.7.md">
           <div class="copy-row"><button type="button" class="btn" disabled>Copy the Duel protocol</button><p class="status" role="status"></p></div>
           <p class="source">protocol/ai_duel_protocol_v1.7.md</p>
           <details class="show"><summary>Show it</summary><textarea readonly rows="8" aria-label="The Duel protocol" spellcheck="false"></textarea></details>
         </div>
         <p class="hint">It copies the whole file. Replace the two bracketed lines near the top with your topic and your materials before you send it.</p>
-        <p>A worked run is in <a href="https://github.com/tjhavranek/research-audit-duel-protocol/tree/main/examples">examples/</a>: the question was how to improve the WAIVE estimator, the inputs were <a href="examples/maive.pdf">maive.pdf</a> and <a href="examples/waive_ottawa.pdf">waive_ottawa.pdf</a>, and <a href="examples/AI_duel_results.docx">AI_duel_results.docx</a> is what came out. Bob Reed at the University of Canterbury <a href="https://www.maer-net.org/post/ai_duel?commentId=0405637a-a4e5-4b40-8498-2fdd496fdad0">ran the same example independently</a> and reached the same substantive conclusions in different words. Two runs agreeing is not proof that either is right, but the protocol is built to make surface variation cheap and substantive variation informative, and that is what happened.</p>
+        <p>A worked run is in <a href="https://github.com/tjhavranek/research-audit-duel-protocol/tree/main/examples">examples/</a>, on how to improve the WAIVE estimator: <a href="examples/maive.pdf">maive.pdf</a> and <a href="examples/waive_ottawa.pdf">waive_ottawa.pdf</a> in, <a href="examples/AI_duel_results.docx">AI_duel_results.docx</a> out. It is the only worked example here, and it is a Duel run rather than a MAD one. Bob Reed at the University of Canterbury <a href="https://www.maer-net.org/post/ai_duel?commentId=0405637a-a4e5-4b40-8498-2fdd496fdad0">ran it independently</a> and reached the same conclusions in different words, which is weak evidence either is right, since both runs could share a blind spot.</p>
       </div>
     </details>
 
     <details class="row row-quiet" id="automated">
       <summary><h3 class="row-title">Automated alternatives</h3><span class="row-meta">For people already working in Claude Code or the Codex CLI &middot; separate repositories</span></summary>
       <div class="row-body">
-        <p><a href="https://github.com/tjhavranek/mad-research">mad-research</a> runs this audit as a command instead of five browser tabs: three independent role streams, an anonymised cross-critique with a prompt-injection guard on the bundle, and a fresh-context synthesis against a locked rubric, with the whole audit trail written to disk. It needs Claude Code and an authenticated Codex CLI, and it trades the four-model coverage for two providers.</p>
-        <p><a href="https://github.com/tjhavranek/paper-workshop">paper-workshop</a> goes past a critique memo. It builds a referee fleet for your specific paper, makes rival traditions argue each contested claim, and then, if you ask, produces a tracked-changes redline and a clean revision with your own analysis re-run. It is Claude Code only, and it is the newest and least validated of the family: the rebuild has been demonstrated end to end once.</p>
+        <p><a href="https://github.com/tjhavranek/mad-research">mad-research</a> runs this audit as one command instead of five browser tabs, writing the whole audit trail to disk. It needs Claude Code and an authenticated Codex CLI, and trades the four-model coverage for two providers.</p>
+        <p><a href="https://github.com/tjhavranek/paper-workshop">paper-workshop</a> goes past a critique memo to a tracked-changes redline and a clean revision with your own analysis re-run. Claude Code only, and the least validated of the family: the rebuild has been demonstrated end to end once.</p>
       </div>
     </details>
   </section>
 
-  <section class="limits" aria-labelledby="limits-h">
-    <h2 id="limits-h">Where these runs go wrong</h2>
-    <ul role="list">
-      <li><b>Premature consensus.</b> Three models make the same point and it starts to sound proven. Merge the duplicates by ID and then judge the argument once, on the evidence in your document rather than on the count.</li>
-      <li><b>Role drift.</b> By Round 2 a model has quietly become a generic reviewer again. Restate the role in the chat and make the prior concrete.</li>
-      <li><b>Your own editing.</b> An easy way to spoil a run is to tidy the bundles between rounds. Paste them verbatim and judge at the end, where your judgement is visible as yours.</li>
-      <li><b>A quote that is not in your paper.</b> The last step exists for this. Do not skip it because the memo reads well.</li>
-    </ul>
-  </section>
 </main>
 
 <footer class="foot">
   <div class="wrap">
     <p><a href="https://github.com/tjhavranek/research-audit-duel-protocol">Source on GitHub</a> &middot; <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> &middot; <a href="protocol/ai_mad_protocol_v2.1.md">The protocol as one file</a> &middot; <a href="protocol/ai_mad_protocol_v2.1.pdf">as a PDF handout</a> &middot; <a href="CHANGELOG.md">Changelog</a></p>
-    <p class="small">This page runs MAD v2.1. Cite it as: Irsova, Z., &amp; Havranek, T. (2026). <i>Research Audit Protocols: Duel + MAD.</i> <a class="nowrap" href="https://doi.org/10.5281/zenodo.19105954">doi.org/10.5281/zenodo.19105954</a>, naming the version you ran. The archived record behind that DOI is v2.0, and v2.1 is the text in this repository.</p>
-    <p class="small">The buttons copy the prompts straight out of the protocol file in this repository. The page fills in only what the protocol leaves as a bracketed placeholder: the role and the label in Rounds 1 and 2, and the contested criticism, the fault line and the new role in Round 3. The arbiter prompt is copied untouched. If a button copies something that does not match the file, please open a <a href="https://github.com/tjhavranek/research-audit-duel-protocol/issues">GitHub issue</a>.</p>
+    <p class="small">This page runs MAD v2.1. Cite it as Irsova, Z., &amp; Havranek, T. (2026), <i>Research Audit Protocols: Duel + MAD</i>, <a class="nowrap" href="https://doi.org/10.5281/zenodo.19105954">doi.org/10.5281/zenodo.19105954</a>, naming the version you ran. The DOI archives v2.0; v2.1 is the text in this repository.</p>
+    <p class="small">The buttons copy the prompts straight out of the protocol file, filling in only its bracketed placeholders: the role and label, and Round 3&rsquo;s criticism and fault line. The arbiter prompt is copied untouched. If a button copies something that does not match the file, please open a <a href="https://github.com/tjhavranek/research-audit-duel-protocol/issues">GitHub issue</a>.</p>
   </div>
 </footer>
 

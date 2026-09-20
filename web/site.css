@@ -89,10 +89,10 @@ code, pre, textarea { font-family: var(--mono); }
 
 /* section headings */
 .section-head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 14px; margin: 48px 0 6px; }
-.run h2, .others > h2, .limits h2 {
+.run h2, .others > h2 {
   font-family: var(--serif); font-weight: 600; font-size: 30px; line-height: 1.2; letter-spacing: -.01em; margin: 0;
 }
-.others > h2, .limits h2 { margin: 56px 0 8px; }
+.others > h2 { margin: 56px 0 8px; }
 .tag { font-size: 13px; color: var(--accent); border: 1px solid var(--accent); border-radius: 99px; padding: 0 10px; }
 .intro { color: var(--muted); margin-bottom: 18px; }
 
@@ -229,9 +229,6 @@ code, pre, textarea { font-family: var(--mono); }
 .row-body > p:first-child { margin-top: 16px; }
 
 /* where it goes wrong */
-.limits ul { list-style: none; margin: 0; padding: 0; }
-.limits li { position: relative; padding: 0 0 0 22px; margin: 0 0 12px; }
-.limits li::before { content: ""; position: absolute; left: 2px; top: .8em; width: 9px; height: 1.5px; background: var(--accent); }
 
 /* footer */
 .foot { margin-top: 64px; border-top: 1px solid var(--line); background: var(--surface); padding-block: 26px 34px; font-size: 15px; color: var(--muted); }
@@ -247,8 +244,8 @@ code, pre, textarea { font-family: var(--mono); }
   .load-fail { padding: 10px 12px; }
   .boundary { padding: 16px 16px 6px; }
   .section-head { margin-top: 40px; }
-  .run h2, .others > h2, .limits h2 { font-size: 26px; }
-  .others > h2, .limits h2 { margin-top: 44px; }
+  .run h2, .others > h2 { font-size: 26px; }
+  .others > h2 { margin-top: 44px; }
   .steps > li { padding-left: 46px; }
   .steps > li::before { width: 32px; height: 32px; font-size: 15px; }
   .steps > li::after { left: 15.5px; top: 32px; }
