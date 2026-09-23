@@ -3,6 +3,44 @@
 Older protocol versions stay in `protocol/` rather than being replaced, so a run
 recorded against an earlier version can still be reproduced and cited.
 
+## MAD v2.1, revised — 2026-09-23
+
+The protocol was run end to end for the first time, on the MAIVE paper in
+`examples/`, and the page was reviewed again. Both turned up defects that reading
+alone had missed. One change is inside a prompt: Round 1 now gives the biggest
+blind spot an ID. If you copied Round 1 before this date, that line is the
+difference.
+
+**From the test run**
+
+- The blind spot in Round 1 had no ID, although it is often the most important
+  thing a seat says. In the run, the four seats improvised four different labels
+  for the same four points in Round 2, which defeats the purpose of stable IDs. It
+  is now `[LABEL]-B1`.
+- The cost table said free tiers are often enough to start. On a 12-page paper
+  the two bundles came to about 155,000 characters, which the arbiter has to read
+  in full. The table now says the later rounds need a large context window, since
+  a model given more than it can hold reads part of it without telling you.
+
+**From the review**
+
+- Round 3 asks for both bundles, but the page gave it no upload line and told you
+  to build the second bundle only before the arbiter, so anyone following the page
+  in order ran Round 3 without the evidence it is meant to judge. The second bundle
+  is now built at the end of Round 2, and Round 3 has an upload line.
+- The arbiter was never handed the Round 3 answer, on the page or in the protocol's
+  checklist, although its prompt expects one. Both now include it.
+- A "fresh" arbiter conversation is not fresh if chat memory is on, because it can
+  draw on the ChatGPT seat's earlier conversations about the same document. The
+  page and the protocol now say to use a Temporary Chat set to Unpersonalized, or to
+  turn memory off. A Personalized temporary chat still uses saved memories.
+- An edited role was lost if the page reloaded between rounds, which on a phone can
+  happen every time you switch to a chatbot app, and Round 2 then sent a different
+  role from the one Round 1 used. Edited roles now persist in the tab's session
+  storage, which never leaves the browser and is cleared when the tab closes.
+- The training opt-out links covered three of the four providers. Grok, which
+  trains on conversations by default, now has one too.
+
 ## MAD v2.1 — 2026-09-20
 
 Protocol revision, plus a web page for running it.

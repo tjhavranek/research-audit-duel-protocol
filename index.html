@@ -37,7 +37,7 @@
   </section>
 
   <dl class="cost">
-    <div><dt>4</dt><dd>accounts, one per model. Free tiers are often enough to start.</dd></div>
+    <div><dt>4</dt><dd>accounts, one per model. Free tiers can start a run, but the later rounds need a large context window.</dd></div>
     <div><dt>8</dt><dd>model runs before the optional round: four in Round 1, four in Round 2.</dd></div>
     <div><dt>2</dt><dd>files you assemble by hand, each holding four outputs, verbatim.</dd></div>
     <div><dt>1&ndash;2h</dt><dd>of your attention. Most of it goes to the bundles and the last step, not the prompts.</dd></div>
@@ -45,7 +45,7 @@
 
   <aside class="boundary" aria-labelledby="boundary-h">
     <h2 id="boundary-h">Before you paste anything</h2>
-    <p>Whatever you upload goes to four companies rather than one. Turn off training on your data where the provider allows it (<a href="https://help.openai.com/en/articles/7730893-chatgpt-privacy-practices">ChatGPT</a>, <a href="https://privacy.claude.com/en/articles/10023580-is-my-data-used-for-model-training">Claude</a>, <a href="https://support.google.com/gemini/answer/13594961">Gemini</a>) and check what your institution allows before you start. Opting out of training does not delete what you already sent.</p>
+    <p>Whatever you upload goes to four companies rather than one. Turn off training on your data where the provider allows it (<a href="https://help.openai.com/en/articles/7730893-chatgpt-privacy-practices">ChatGPT</a>, <a href="https://privacy.claude.com/en/articles/10023580-is-my-data-used-for-model-training">Claude</a>, <a href="https://support.google.com/gemini/answer/13594961">Gemini</a>, <a href="https://x.ai/legal/faq">Grok</a>) and check what your institution allows before you start. Opting out of training does not delete what you already sent.</p>
     <p>If the document is not yours, the decision is not yours either. A manuscript you are refereeing, a grant you are evaluating, a colleague&rsquo;s unpublished draft: uploading it means making a confidentiality choice on someone else&rsquo;s behalf, four times over. Many journals and funders forbid it outright, and some <a href="https://erc.europa.eu/system/files/2026-03/Use-AI-grant-proposal-evaluation.pdf">rule out AI assessment of a proposal altogether</a>, including a model you run on your own machine. Find the policy that binds you first.</p>
   </aside>
 
@@ -84,13 +84,14 @@
           <div class="copy-row"><button type="button" class="btn">Copy the bundle template</button><p class="status" role="status"></p></div>
           <details class="show"><summary>Show it</summary><textarea readonly rows="6" aria-label="The bundle template" spellcheck="false"></textarea></details>
         </div>
-        <p class="hint">The same shape does for the Round 2 bundle you will assemble before the arbiter. Only the contents change.</p>
+        <p class="hint">When this round is done, put the four Round 2 answers into a second bundle of the same shape. Round 3 and the arbiter both need it.</p>
         <div class="fanout" data-round="2" data-step="2"></div>
         <p class="hint">This is the round that does the work: most of what Round 1 produced is generic, and this is where it dies. Every criticism carries an ID such as <code>Claude-C3</code>, so a model can name exactly which point it is attacking. If one has drifted back into a generic reviewer by now, restate its role in the chat.</p>
       </li>
 
       <li>
         <h3>Round 3, only if the gate is met</h3>
+        <p class="uploads"><b>Upload:</b> the document and both bundles, to the one conversation you are reassigning.</p>
         <p>Run this only when, for one and the same criticism, one model said keep and another said reject, both cited evidence from the document, and it is high severity. Two models saying &ldquo;identification is weak&rdquo; and &ldquo;parallel trends is not defended&rdquo; are agreeing in different words. Two models reading one table and disagreeing about whether it shows what the text claims are not.</p>
         <p>Run it once, on one model. Whatever it leaves unsettled goes to the arbiter as an open disagreement rather than to a fourth round.</p>
         <div class="targeted">
@@ -116,8 +117,8 @@
 
       <li>
         <h3>The arbiter</h3>
-        <p class="uploads"><b>Upload:</b> the document and both bundles, to a fresh ChatGPT conversation.</p>
-        <p>Collect the four Round 2 answers into a second bundle, same shape as the first. Then open a fresh conversation, fresh even though ChatGPT was one of the four: a model that argued a position in Round 2 will defend its own phrasing when asked to judge. The prompt makes it merge duplicates before ruling on the evidence, and forbids counting how many models agreed, because four models trained on overlapping data agreeing is weak evidence.</p>
+        <p class="uploads"><b>Upload:</b> the document, both bundles and any Round 3 answer, to a fresh ChatGPT conversation.</p>
+        <p>Open a fresh conversation even though ChatGPT was one of the four: a model that argued a position in Round 2 will defend its own phrasing when asked to judge. Use a Temporary Chat set to Unpersonalized, or switch Memory off, because otherwise the new chat can still draw on the old ones. The prompt makes it merge duplicates before ruling on the evidence, and forbids counting how many models agreed, because four models trained on overlapping data agreeing is weak evidence.</p>
         <div class="fanout fanout-one" data-round="4" data-step="4"></div>
         <figure class="specimen">
           <figcaption class="specimen-title">What the arbiter memo contains</figcaption>

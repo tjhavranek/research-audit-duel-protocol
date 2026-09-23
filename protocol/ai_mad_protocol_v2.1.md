@@ -8,7 +8,7 @@ A copy-paste protocol for running MAD with ChatGPT, Claude, Gemini and Grok. Res
 
 | | |
 |---|---|
-| Accounts | Four, one per model. Free tiers are often enough to start, with tighter quotas, weaker file handling and smaller context windows. |
+| Accounts | Four, one per model. Free tiers can start a run, but the bundles grow fast: in a test run on a 12-page paper they came to about 155,000 characters, which the arbiter has to read in full alongside the paper. The later rounds need a paid tier or a large context window, or a model will read only part of the evidence without telling you. |
 | Model runs | Eight before the optional round: four in Round 1, four in Round 2. |
 | Files you assemble by hand | Two bundles, one after each round, each holding four verbatim outputs. |
 | Uploads | Four in Round 1, eight in Round 2 (document plus bundle to each model), then the arbiter. |
@@ -17,7 +17,7 @@ A copy-paste protocol for running MAD with ChatGPT, Claude, Gemini and Grok. Res
 The work that is not automated is the work that decides whether the run is any good.
 
 - Prefer PDF for the source, because page numbering survives across interfaces. Use DOCX or PDF for the bundles.
-- Start one fresh conversation per model and continue it across rounds. Use a fresh ChatGPT conversation for the arbiter even though ChatGPT is one of the four.
+- Start one fresh conversation per model and continue it across rounds. Use a fresh ChatGPT conversation for the arbiter even though ChatGPT is one of the four. Switch off memory and chat-history features for the run, or a "fresh" conversation can still draw on an earlier one.
 - Keep the source file identical across models and change only the assigned role. Never summarize or paraphrase a model's output before showing it to the others.
 - Grounding standard: quote plus page or section. Where an interface gives no reliable page numbers, accept a section heading plus a distinctive quote. A persuasive point without grounding is discarded.
 - If a model refuses a file, truncates it, or answers as though it read only part of it, stop and fix that. A round assembled from partial input looks exactly like one assembled from complete input, and nothing downstream will catch it. Split the document, retry, or drop that model and say so in the bundle.
@@ -45,7 +45,7 @@ Severity is compared across models, so it needs one definition rather than four.
 
 ## Labels and criticism IDs
 
-Each seat gets a short label, normally the model's name, and every point carries that label and a number, so `Claude-C3` names one criticism for the rest of the run. Grounded criticisms are `C1`, `C2`; a new issue raised in Round 2 is `N1`; a point resting on knowledge from outside the document is `E1`, carried separately to the arbiter. Without stable IDs, Round 2's "which peer point" has no answer anyone can check, and the arbiter cannot tell whether four models are discussing one criticism or four.
+Each seat gets a short label, normally the model's name, and every point carries that label and a number, so `Claude-C3` names one criticism for the rest of the run. Grounded criticisms are `C1`, `C2`; the biggest blind spot is `B1`; a new issue raised in Round 2 is `N1`; a point resting on knowledge from outside the document is `E1`, carried separately to the arbiter. The blind spot needs an ID as much as the criticisms do, because it is often the most important thing a seat says, and a test run in which it had none produced four different improvised labels for the same four points. Without stable IDs, Round 2's "which peer point" has no answer anyone can check, and the arbiter cannot tell whether four models are discussing one criticism or four.
 
 ## File hygiene
 
@@ -75,7 +75,7 @@ Use the same shape for the Round 2 bundle. If a model failed or was dropped, kee
 | 2. Round 1 | Document | Same document to each model, one role each. Collect the four assessments verbatim. |
 | 3. Round 2 | Document + Round 1 bundle | Same four conversations. Collect the cross-exams. |
 | 4. Optional Round 3 | Document + both bundles | One model only, and only if the Step 3 gate is met. |
-| 5. Final arbiter | Document + all bundles | Fresh ChatGPT conversation. |
+| 5. Final arbiter | Document + both bundles + any Round 3 answer | Fresh ChatGPT conversation, with memory off. |
 | 6. Your verification | — | Step 5 below. Nothing is final until you have done it. |
 
 ## Step 1: Independent Assessment (Round 1)
@@ -139,6 +139,7 @@ For each:
 - Why it matters:
 
 C. Biggest blind spot
+- ID: [LABEL]-B1
 In 3-5 sentences: the single most important grounded insight a typical reviewer
 or advisor might miss. It must not restate a criticism you already listed in A.
 
@@ -313,7 +314,7 @@ grounded point: [state it]".
 
 ## Step 4: Final Arbiter (fresh ChatGPT conversation)
 
-Use a fresh ChatGPT conversation for the arbiter step. This matters even if ChatGPT already participated as one of the four models in earlier rounds. The arbiter should judge the arguments, not defend its own earlier phrasing.
+Use a fresh ChatGPT conversation for the arbiter step, and make sure it really is fresh: a Temporary Chat set to Unpersonalized, or Memory switched off, since otherwise it can draw on the ChatGPT seat's earlier conversations about the same document. This matters even if ChatGPT already participated as one of the four models in earlier rounds. The arbiter should judge the arguments, not defend its own earlier phrasing.
 
 ### Copy-paste prompt
 

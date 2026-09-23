@@ -1,7 +1,8 @@
 /* research-audit-duel-protocol: the web page.
    Reads the four MAD prompts out of the protocol file named in MAD below, at load
    time, and copies them unchanged except for the bracketed placeholders. Nothing
-   is sent anywhere, and nothing is stored. tests/check_prompts.py reimplements the
+   is sent anywhere. The one thing kept is an edited role, in this tab's session
+   storage, so it survives a reload. tests/check_prompts.py reimplements the
    extraction, so a change to the protocol that would break a button fails CI. */
 (function () {
   "use strict";
@@ -11,11 +12,10 @@
 
   /* The default lineup is the protocol's own table, written out as concrete
      priors rather than labels, because "tough referee" four times produces one
-     review four times. The two heaviest analytical seats go to the models that
-     currently read long technical documents best. The devil's advocate seat goes
-     to the model trained most differently from the rest: that seat is there to
-     break an emerging consensus, which is a job the odd model out does better
-     than the strongest one. */
+     review four times. Which model takes which seat is the authors' choice, not
+     a finding: the heavy analytical seats go to the models they have found
+     steadiest on long technical documents, and the devil's advocate seat to the
+     one that diverges most, because that seat is there to break a consensus. */
   var LINEUP = [
     {
       id: "chatgpt",
@@ -68,6 +68,17 @@
      full sentence, so a role pasted in raw ends the line with two full stops.
      The template owns the punctuation, for a question mark as much as a period. */
   function asClause(s) { return (s || "").trim().replace(/[.!?]+$/, ""); }
+
+  /* Edited roles survive a reload in the same tab. A run takes an hour or more,
+     and a phone discards background tabs freely, so without this a reload between
+     Round 1 and Round 2 would quietly send Round 2 a different role from the one
+     the model answered Round 1 in. Session storage rather than local: it goes when
+     the tab closes, so roles written for last month's paper never come back
+     uninvited. Nothing leaves the browser either way. */
+  var ROLE_KEY = "radp.role.";
+  function loadRole(id) { try { return sessionStorage.getItem(ROLE_KEY + id); } catch (e) { return null; } }
+  function saveRole(id, v) { try { sessionStorage.setItem(ROLE_KEY + id, v); } catch (e) { /* storage blocked: edits last as long as the page */ } }
+  function forgetRole(id) { try { sessionStorage.removeItem(ROLE_KEY + id); } catch (e) { /* nothing stored */ } }
 
   /* A role is the thing the user is meant to read and edit, so the box shows all
      of it. A fixed row count clips the longer roles on a narrow screen, and a
@@ -156,10 +167,12 @@
       var area = document.createElement("textarea");
       area.className = "seat-role";
       area.rows = 2;
+      var saved = loadRole(m.id);
+      if (saved !== null) { m.role = saved; }
       area.value = m.role;
       area.spellcheck = false;
       area.setAttribute("aria-label", "The role given to " + m.name);
-      area.addEventListener("input", function () { m.role = area.value; grow(area); });
+      area.addEventListener("input", function () { m.role = area.value; saveRole(m.id, area.value); grow(area); });
       m.field = area;
 
       row.appendChild(head);
@@ -174,6 +187,7 @@
         LINEUP.forEach(function (m, i) {
           m.role = DEFAULTS[i];
           m.field.value = DEFAULTS[i];
+          forgetRole(m.id);
           grow(m.field);
         });
       });

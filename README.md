@@ -33,7 +33,7 @@ Running MAD end to end, before the optional Round 3:
 
 | | |
 |---|---|
-| Accounts | Four, one per model. Free tiers are often enough to start. |
+| Accounts | Four, one per model. Free tiers can start a run, but the later rounds need a large context window. |
 | Model runs | Eight: four in Round 1, four in Round 2. |
 | Bundles you assemble by hand | Two, each holding four verbatim outputs. |
 | Your attention | One to two hours, mostly spent assembling bundles and on your own verification pass, not writing prompts. |
